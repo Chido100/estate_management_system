@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 # Register a user
 def register_resident(request):
-    if request.methd == "POST":
+    if request.method == "POST":
         form = RegisterResidentForm(request.POST)
         if form.is_valid():
             resident = form.save(commit=False)
@@ -28,4 +28,3 @@ def register_resident(request):
 def all_residents(request):
     residents = User.objects.all().order_by("-date_joined")
     return render(request, "users/all_residents.html", {"residents": residents})
-    
