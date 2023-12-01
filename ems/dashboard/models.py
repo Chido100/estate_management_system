@@ -15,7 +15,7 @@ class Category(models.Model):
 
 
 class Item(models.Model):
-    catgeory = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to='item_images', blank=True, null=True)
