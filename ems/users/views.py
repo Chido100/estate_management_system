@@ -11,6 +11,7 @@ def register_resident(request):
         form = RegisterResidentForm(request.POST)
         if form.is_valid():
             resident = form.save(commit=False)
+            # Make is_resident true for newly registered user
             resident.is_resident = True
             resident.save()
             messages.info(request, "Your account has been successfully resgistered!")
@@ -20,7 +21,8 @@ def register_resident(request):
             return redirect("register-resident")
     else:
         form = RegisterResidentForm()
-    return render(request, "users/register_resident.html", {"form": form})
+        context = {'form': form}
+    return render(request, "users/register_resident.html", context)
 
 
 # View all residents
