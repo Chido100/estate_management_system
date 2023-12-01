@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import User
-from .forms import RegisterResidentForm, UserUpdateForm
+from .forms import RegisterResidentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import get_user_model
@@ -60,15 +60,11 @@ def register_resident(request):
             # Make is_resident true for newly registered user
             resident.is_resident = True
             resident.save()
-            messages.info(request, "Your account has been successfully resgistered!")
+            activate_email(request, resident, form.cleaned_data.get('email'))
             return redirect("login")
-        else:
-            messages.warning(request, "Something went wrong. Please check your details and try again.")
-            return redirect("register-resident")
     else:
         form = RegisterResidentForm()
-        context = {'form': form}
-    return render(request, "users/register_resident.html", context)
+    return render(request, "users/register_resident.html", {'form': form})
 
 
 # View all residents
@@ -80,35 +76,37 @@ def all_residents(request):
 
 
 # User profile
-class ProfileView(LoginRequiredMixin, View):
+@login_required
+def profile_view(request):
     template_name = 'users/profile.html'
     user_form_class = UserUpdateForm
     profile_form_class = ProfileUpdateForm
 
-    def get(self, request, *args, **kwargs):
-        u_form = self.user_form_class(instance=request.user)
-        if hasattr(request.user, 'profile'):
-            p_form = self.profile_form_class(instance=request.user.profile)
-        else:
-            p_form = self.profile_form_class()
-        return render(request, self.template_name, {'u_form': u_form, 'p_form': p_form})
+    u_form = user_form_class(instance=request.user)
 
-    def post(self, request, *args, **kwargs):
-        u_form = self.user_form_class(request.POST, instance=request.user)
+    if hasattr(request.user, 'profile'):
+        p_form = profile_form_class(instance=request.user.profile)
+    else:
+        p_form = profile_form_class()
+    
+    if request.method == 'POST':
+        u_form = user_form_class(request.POST, instnace=request.user)
+
         if hasattr(request.user, 'profile'):
-            p_form = self.profile_form_class(request.POST, request.FILES, instance=request.user.profile)
+            p_form = profile_form_class(request.POST, request.FILES, instance=request.user.profile)
         else:
-            p_form = self.profile_form_class(request.POST, request.FILES)
+            p_form = profile_form_class(request.POST, request.FILES)
 
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
+
             if not hasattr(request.user, 'profile'):
                 profile = p_form.save(commit=False)
                 profile.user = request.user
                 profile.save()
             else:
                 p_form.save()
+
             messages.info(request, 'Your account has been updated!')
             return redirect('profile')
-
-        return render(request, self.template_name, {'u_form': u_form, 'p_form': p_form})
+    return render(request, template_name, {'u_form': u_form, 'p_form': p_form})
