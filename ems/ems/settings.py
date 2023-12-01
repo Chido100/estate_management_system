@@ -144,7 +144,21 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 
+# Emailing settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'chidozieamefule@googlemail.com'
+EMAIL_HOST_USER = 'chidozieamefule@googlemail.com'
+EMAIL_HOST_PASSWORD = 'xhsq lsru vqze zxsd'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+PASSWORD_RESET_TIMEOUT = 14400
+
+
+
 JAZZMIN_SETTINGS = {
     'site_brand': 'EMS',
-    'site_header': 'EMS',
+    'site_title': 'EMS',
 }

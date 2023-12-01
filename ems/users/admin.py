@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User
+from .models import User, Profile
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -7,4 +7,4 @@ class UserAdmin(admin.ModelAdmin):
     search_fields = ['username']
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(User, UserAdmin, Profile)
