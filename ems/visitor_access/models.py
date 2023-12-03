@@ -34,4 +34,4 @@ class VisitorAccessRequest(models.Model):
         verbose_name_plural = 'Visitor Access Request'
 
     def __str__(self):
-        return self.creator
+        return self.visitor_name

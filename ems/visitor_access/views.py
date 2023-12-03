@@ -31,13 +31,13 @@ def create_access_request(request):
             va.creator = request.user
             va.request_status = 'Pending'
             va.save()
-            messages.info(request, "Your request has been successfully submitted.")
+            messages.info(request, "Your visitor access request has been successfully submitted.")
             return redirect('dashboard')
         else:
             messages.warning(request, "Something went wrong. Please check details.")
             return redirect('create-access-request')
     else:
-        form = VisitorAccessRequest()
+        form = VisitorAccessRequestForm()
     return render(request, 'visitor_access/create_access_request.html', {'form': form})
 
 

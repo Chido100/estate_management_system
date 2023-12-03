@@ -39,7 +39,7 @@
                                     Visitor Acess
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Create Ticket</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'create-access-request' %}">Create Ticket</a></li>
                                     <li><a class="dropdown-item" href="#">View Tickets</a></li>
                                 </ul>
                             </li>
@@ -127,16 +127,16 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Workspace</a>
+                        <a class="nav-link active" href="{% url 'workspace' %}">Workspace</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Ticket Queue</a>
+                        <a class="nav-link active" href="{% url 'request-queue' %}">Visitor Access Request Queue</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expand="false">Manage Tickets</a>
+                            data-bs-toggle="dropdown" aria-expand="false">Manage Requests</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Closed Tickets</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all-closed-requests' %}">Closed Requests</a></li>
                             <!--<li><a class="dropdown-item" href="#">Another Action</a></li>
                             <li>
                                 <hr class="dropdown-divider">
