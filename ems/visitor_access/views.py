@@ -83,3 +83,39 @@ def request_queue(request):
     return render(request, 'visitor_access/request_queue.html', {'access_request': access_request})
 
 
+# Accept a request from queue
+@login_required
+def accept_access_request(request, pk):
+    access_request = VisitorAccessRequest.objects.get(pk=pk)
+    access_request.assigned_to = request.user
+    access_request.request_status = 'Active'
+    access_request.accepted_date = datetime.datetime.now()
+    access_request.save()
+    messages.info(request, 'Access Request has been accepted, Please resolve as soon as possible.')
+    return redirect('workspace')
+
+
+# Close a request
+@login_required
+def close_access_request(request, pk):
+    access_request = VisitorAccessRequest.objects.get(pk=pk)
+    access_request.request_status = 'Completed'
+    access_request.is_resolved = True
+    access_request.closed_date = datetime.datetime.now()
+    access_request.save()
+    messages.info(request, 'Access Request has been resolved')
+    return redirect('request_queue')
+
+
+# Request security team is working on
+@login_required
+def workspace(request):
+    access_requests = VisitorAccessRequest.objects.filter(assigned_to=request.user, is_resolved=False)
+    return render(request, 'visitor_access/workspace.html', {'access_requests': access_requests})
+
+
+# All closed/resolved requests
+@login_required
+def all_closed_requests(request):
+    access_requests = VisitorAccessRequest.objects.filter(assigned_to=request.user, is_resolved=True)
+    return render(request, 'visitor_access/all_closed_requests.html', {'access_requests': access_requests})
