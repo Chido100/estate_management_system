@@ -5,11 +5,11 @@
 {% if request.user.is_resident %}
 
 <!-- Showcase -->
-<section class="bg-dark p-5 p-lg-0 text-center text-light text-sm-start">
+<section class="bg-primary-subtle p-5 p-lg-0 text-center text-dark text-sm-start">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
-                <h1>Neigbourhood <span class="text-warning">Connect</span></h1>
+                <h1>Neigbourhood <span class="text-danger">Connect</span></h1>
                 <p class="lead my-4">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -17,7 +17,7 @@
                     It has survived not only five centuries, but also the leap into electronic typesetting,
                     remaining essentially unchanged.
                 </p>
-                <button class="btn btn-outline-warning btn-lg" data-bs-toggle="modal" data-bs-target="#contact">Contact Us</button>
+                <button class="btn btn-outline-dark btn-lg" data-bs-toggle="modal" data-bs-target="#contact">Contact Us</button>
             </div>
             <img class="img-fluid w-50 d-none d-sm-block" src="/media/item_images/showcase.png" alt="" />
         </div>
@@ -29,7 +29,7 @@
 <!-- Boxes -->
 <section class="p-5">
     <div class="container">
-        <h1>News and Events</h1><br>
+        <h1>News & Events</h1><br>
         <div class="row text-center g-4">
             
             {% for item in items %}
@@ -53,6 +53,66 @@
             </div>
 
             {% endfor %}
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- Boxes -->
+<section class="p-5">
+    <div class="container">
+        <h1>EMS is a powerful tool for...</h1><br>
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <h5 class="card-title">Effective Management</h5>
+                    <div class="card-body">  
+                        <div>
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
+                            as opposed to using 'Content here, content here', making it look like readable English. 
+                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, 
+                            and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <h5 class="card-title">Enhancing Security</h5>
+                    <div class="card-body">
+                        <div>
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
+                            as opposed to using 'Content here, content here', making it look like readable English. 
+                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, 
+                            and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <h5 class="card-title">Efficent Operations and Services</h5>
+                    <div class="card-body">  
+                        <div>
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, 
+                            as opposed to using 'Content here, content here', making it look like readable English. 
+                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, 
+                            and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
         </div>
 
     </div>
@@ -98,7 +158,7 @@
 {% elif request.user.is_security %}
 
 <!-- Showcase -->
-<section class="bg-dark p-5 p-lg-0 text-center text-light text-sm-start">
+<section class="bg-light p-5 p-lg-0 text-center text-dark text-sm-start">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
@@ -111,7 +171,7 @@
                     remaining essentially unchanged.
                     
                 </p>
-                <button class="btn btn-outline-warning btn-lg" data-bs-toggle="modal" data-bs-target="#contact">Contact Us</button>
+                <button class="btn btn-outline-dark btn-lg" data-bs-toggle="modal" data-bs-target="#contact">Contact Us</button>
             </div>
             <img class="img-fluid w-50 d-none d-sm-block" src="/media/item_images/showcase.png" alt="" />
         </div>
@@ -193,7 +253,7 @@
 {% elif request.user.is_management %}
 
 <!-- Showcase -->
-<section class="bg-dark p-5 p-lg-0 text-center text-light text-sm-start">
+<section class="bg-light p-5 p-lg-0 text-center text-dark text-sm-start">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
@@ -205,7 +265,7 @@
                     It has survived not only five centuries, but also the leap into electronic typesetting,
                     remaining essentially unchanged.
                 </p>
-                <button class="btn btn-outline-warning btn-lg" data-bs-toggle="modal" data-bs-target="#contact">Contact Us</button>
+                <button class="btn btn-outline-dark btn-lg" data-bs-toggle="modal" data-bs-target="#contact">Contact Us</button>
             </div>
             <img class="img-fluid w-50 d-none d-sm-block" src="/media/item_images/showcase.png" alt="" />
         </div>
@@ -247,6 +307,8 @@
     </div>
 
 </section>
+
+
 
 
 
