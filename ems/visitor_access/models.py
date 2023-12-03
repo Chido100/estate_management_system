@@ -16,8 +16,8 @@ GENDER_CHOICES = (
     ('female', 'Female')
 )
 
-class VisitorAccess(models.Model):
-    ticket_number = models.UUIDField(default=uuid.uuid4)
+class VisitorAccessRequest(models.Model):
+    request_number = models.UUIDField(default=uuid.uuid4)
     visitor_name = models.CharField(max_length=100)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES)
     vehicle_registration = models.CharField(max_length=20, blank=True, null=True)
@@ -28,10 +28,10 @@ class VisitorAccess(models.Model):
     is_resolved = models.BooleanField(default=False)
     accepted_date = models.DateTimeField(null=True, blank=True)
     closed_date = models.DateTimeField(null=True, blank=True)
-    ticket_status = models.CharField(max_length=50, choices=STATUS_CHOICES)
+    request_status = models.CharField(max_length=50, choices=STATUS_CHOICES)
 
     class Meta:
-        verbose_name_plural = 'Visitor Access'
+        verbose_name_plural = 'Visitor Access Request'
 
     def __str__(self):
         return self.creator
