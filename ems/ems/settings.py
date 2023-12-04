@@ -34,6 +34,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 
     'jazzmin',
+
+
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,6 +81,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ems.wsgi.application'
+
+
+ASGI_APPLICATION = 'ems.asgi.application'
 
 
 # Database

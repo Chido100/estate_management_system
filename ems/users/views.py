@@ -90,7 +90,7 @@ def profile_view(request):
         p_form = profile_form_class()
     
     if request.method == 'POST':
-        u_form = user_form_class(request.POST, instnace=request.user)
+        u_form = user_form_class(request.POST, instance=request.user)
 
         if hasattr(request.user, 'profile'):
             p_form = profile_form_class(request.POST, request.FILES, instance=request.user.profile)

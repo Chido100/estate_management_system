@@ -79,7 +79,7 @@ def all_access_requests(request):
 # View request queue
 @login_required
 def request_queue(request):
-    access_request = VisitorAccessRequest.objects.filter(request_status='Pending')
+    access_request = VisitorAccessRequest.objects.filter(request_status='Pending').order_by('-date_created')
     return render(request, 'visitor_access/request_queue.html', {'access_request': access_request})
 
 

@@ -13,7 +13,7 @@
 
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <br><h4>Profile Information</h4>
+                    <br><h5>Information</h5>
                     <div class="mb-3">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="{{ u_form.username.name }}" id="username" value="{{ u_form.username.value|default_if_none:'' }}" required>
