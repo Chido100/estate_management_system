@@ -39,8 +39,8 @@
                                     Visitor Acess
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="{% url 'create-access-request' %}">Create Ticket</a></li>
-                                    <li><a class="dropdown-item" href="#">View Tickets</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'create-access-request' %}">Create Request</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'all-access-requests' %}">View Requests</a></li>
                                 </ul>
                             </li>
 
@@ -69,9 +69,7 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Repository</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Browse</a>
-                            </li>
+                            
                         </ul>
                     </div>
 
@@ -123,14 +121,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'workspace' %}">Workspace</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'request-queue' %}">Visitor Access Request Queue</a>
+                        <a class="nav-link active" href="{% url 'request-queue' %}">Request Queue</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -178,7 +174,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">All Residents</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Approved Residents</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all-residents' %}">Approved Residents</a></li>
                         </ul>
                         
                     </li>

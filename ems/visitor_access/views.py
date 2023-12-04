@@ -15,7 +15,7 @@ def access_request_details(request, pk):
     va = User.objects.get(username=access_request.creator)
     va_per_user = va.creator.all()
     context = {'access_request': access_request, 'va_per_user': va_per_user}
-    return render(request, 'visitor_access/visitor_access_details.html', context)
+    return render(request, 'visitor_access/access_request_details.html', context)
 
 
 
@@ -104,7 +104,7 @@ def close_access_request(request, pk):
     access_request.closed_date = datetime.datetime.now()
     access_request.save()
     messages.info(request, 'Access Request has been resolved')
-    return redirect('request_queue')
+    return redirect('request-queue')
 
 
 # Request security team is working on

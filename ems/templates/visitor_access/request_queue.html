@@ -19,20 +19,20 @@
                 </tr>
             </thead>
             <tbody>
-                {% for request in access_request %}
+                {% for a_request in access_request %}
                 <tr>
-                    <td><small>{{request.request_number}}</small></td>
-                    <td><small>{{request.visitor_name}}</small></td>
-                    <td><small>{{request.date_created}}</small></td>
-                    <td>{{request.creator}}</td>
-                    {% if request.request_status == 'Active' %}
+                    <td><small>{{a_request.request_number}}</small></td>
+                    <td><small>{{a_request.visitor_name}}</small></td>
+                    <td><small>{{a_request.date_created}}</small></td>
+                    <td>{{a_request.creator}}</td>
+                    {% if a_request.request_status == 'Active' %}
                     <td><span class="badge bg-success">Active</span></td>
-                    {% elif request.request_status == 'Pending' %}
+                    {% elif a_request.request_status == 'Pending' %}
                     <td><span class="badge bg-warning">Pending</span></td>
-                    {% elif request.request_status == 'Completed' %}
+                    {% elif a_request.request_status == 'Completed' %}
                     <td><span class="badge bg-danger">Completed</span></td>
                     {% endif %}
-                    <td><small><a href="{% url 'accept-access-request' access_request.pk %}">Accept</a></small></td>
+                    <td><small><a href="{% url 'accept-access-request' a_request.pk %}">Accept</a></small></td>
                 </tr>
                 {% endfor %}
                 

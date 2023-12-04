@@ -58,8 +58,8 @@
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <div class="card-body">
                 <h5 class="card-title mb-3">All requests created by {{access_request.creator}}</h5>
-                {% for access_request in va_per_user %}
-                <p class="card-text">{{access_request.request_number}} <a href="{% url 'access-request-details' access_request.pk%}">(view)</a>
+                {% for request_by_user in va_per_user %}
+                <p class="card-text">{{request_by_user.request_number}} <a href="{% url 'access-request-details' request_by_user.pk%}">(view)</a>
                 </p>
                 {% endfor %}
             </div>
