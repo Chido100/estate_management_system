@@ -51,7 +51,7 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="#">Inbox</a></li>
-                                    <li><a class="dropdown-item" href="#">New Conversation</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'new-conversation' %}">New Mail</a></li>
                                 </ul>
                                 
                             </li>
@@ -177,6 +177,17 @@
                             <li><a class="dropdown-item" href="{% url 'all-residents' %}">Approved Residents</a></li>
                         </ul>
                         
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Community Mail
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">Inbox</a></li>
+                            <li><a class="dropdown-item" href="#">New Mail</a></li>
+                        </ul>     
                     </li>
                 
 

@@ -35,8 +35,6 @@ INSTALLED_APPS = [
 
     'jazzmin',
 
-
-    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +45,7 @@ INSTALLED_APPS = [
     'users',
     'dashboard',
     'visitor_access',
+    'community_mail',
 
     'crispy_bootstrap5',
     'crispy_forms',
@@ -83,7 +82,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ems.wsgi.application'
 
 
-ASGI_APPLICATION = 'ems.asgi.application'
 
 
 # Database
@@ -141,6 +139,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 AUTH_USER_MODEL = 'users.User'
 
