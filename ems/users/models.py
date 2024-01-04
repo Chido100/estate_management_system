@@ -5,7 +5,7 @@ from PIL import Image
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
-
+    
     is_resident = models.BooleanField(default=False)
     is_security = models.BooleanField(default=False)
     is_management = models.BooleanField(default=False)
@@ -13,9 +13,10 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
-
     def __str__(self):
         return self.username
+
+
 
 
 class Profile(models.Model):
@@ -34,3 +35,4 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+

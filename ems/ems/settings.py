@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 
-    'jazzmin',
+    #'jazzmin',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -166,7 +166,7 @@ PASSWORD_RESET_TIMEOUT = 14400
 
 
 
-JAZZMIN_SETTINGS = {
-    'site_brand': 'EMS',
-    'site_title': 'EMS',
-}
+#JAZZMIN_SETTINGS = {
+#    'site_brand': 'EMS',
+#    'site_title': 'EMS',
+#}

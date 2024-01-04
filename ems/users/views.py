@@ -32,7 +32,6 @@ def activate(request, uidb64, token):
         messages.error(request, "Activation link is invalid.")
     return redirect('login')
 
-
 def activate_email(request, user, to_email):
     mail_subject = "Activate your account."
     message = render_to_string("users/template_activate_account.html", {
@@ -67,11 +66,16 @@ def register_resident(request):
     return render(request, "users/register_resident.html", {'form': form})
 
 
+
+
+
 # View all residents
 @login_required
 def all_residents(request):
     residents = User.objects.all().order_by("-date_joined")
     return render(request, "users/all_residents.html", {"residents": residents})
+
+
 
 
 
