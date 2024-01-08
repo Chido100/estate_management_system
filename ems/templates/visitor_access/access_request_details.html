@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mx-auto" style="width: 40rem;">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+                <h5 class="card-title mb-3">{{access_request.visitor_name}}</h5>
+                <p class="card-text"><b>Gender: </b>{{access_request.gender}}</p>
+                <p class="card-text"><b>Vehicle Registration: </b>{{access_request.vehicle_registration}}</p>
+                <p class="card-text"><b>Ticket Additional Information: </b>{{access_request.additional_information}}</p>
+                
+                <p><b>Request Number: </b><small>{{access_request.request_number}}</small></p>
+
+
+                <div class="row">
+                    <div class="col">
+                        <b>Date created:</b> {{access_request.date_created}}
+                    </div>
+                    <div class="col">
+                        <b>Assigned To:</b> {{access_request.assigned_to}}
+                    </div>
+                </div> <br>
+                <div class="row">
+                    <div class="col">
+                        {% if access_request.is_resolved %}
+                        <b>Resolved?</b> <span class="badge bg-danger">Yes</span>
+                        {% else %}
+                        <b>Resolved?</b> <span class="badge bg-success">No</span>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <b>Accepted Date:</b> <small>{{access_request.accepted_date}}</small>
+                    </div>
+                </div> <br>
+
+                <div class="row">
+                    <div class="col">
+                        <b>Created By:</b> <small>{{access_request.creator}}</small>
+                    </div>
+                    <div class="col">
+                        <b>Request Status:</b> <small>{{access_request.request_status}}</small>
+                    </div>
+                </div>
+
+                <!-- 
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="card mx-auto" style="width: 40rem;">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+                <h5 class="card-title mb-3">All requests created by {{access_request.creator}}</h5>
+                {% for request_by_user in va_per_user %}
+                <p class="card-text">{{request_by_user.request_number}} <a href="{% url 'access-request-details' request_by_user.pk%}">(view)</a>
+                </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<br>
+{% if request.user.is_security and not access_request.is_resolved %}
+<a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Confirm Resolution</a>
+{% endif %}
+
+{% if request.user.is_resident and not access_request.is_resolved %}
+<a href="{% url 'update-access-request' access_request.pk %}" class="btn btn-primary">Update Request</a>
+{% endif %}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you want to close this request?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'close-access-request' access_request.pk %}" class="btn btn-primary">Save changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
