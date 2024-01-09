@@ -24,6 +24,13 @@
                     <td><small>{{resident.email}}</small></td>
                     <td><small>{{resident.date_joined}}</small></td>
                     <td><small><a href="#">View Details</a></small></td>
+                    {% if resident.is_security %}
+                    <td><small>Security</small></td>
+                    {% elif resident.is_management %}
+                    <td><small>Management</small></td>
+                    {% else %}
+                    <td><small>Resident</small></td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
                 
