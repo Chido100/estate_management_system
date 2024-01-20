@@ -48,6 +48,8 @@ INSTALLED_APPS = [
 
     'crispy_bootstrap5',
     'crispy_forms',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -164,3 +166,30 @@ EMAIL_USE_TLS = True
 PASSWORD_RESET_TIMEOUT = 14400
 
 
+# AWS Configuration
+AWS_ACCESS_KEY_ID = config('MY_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('MY_AWS_SECRET_ACCESS_KEY')
+
+
+# Basic storage configuration for Amazon S3
+AWS_STORAGE_BUCKET_NAME = 'ems-system-files'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_FILE_OVERWRITE = False
+
+
+
+STORAGES = {
+    # Media files (image) management
+
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+
+    # CSS and JS file management
+
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+}
