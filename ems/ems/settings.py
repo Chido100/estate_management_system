@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'crispy_forms',
 
+    'django.contrib.postgres',
+
     'storages',
 ]
 
@@ -90,8 +92,12 @@ WSGI_APPLICATION = 'ems.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ems',
+        'USER': 'ems',
+        'PASSWORD': 'Password01!',
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
 
