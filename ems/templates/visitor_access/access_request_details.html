@@ -10,7 +10,7 @@
                 <h5 class="card-title mb-3">{{access_request.visitor_name}}</h5>
                 <p class="card-text"><b>Gender: </b>{{access_request.gender}}</p>
                 <p class="card-text"><b>Vehicle Registration: </b>{{access_request.vehicle_registration}}</p>
-                <p class="card-text"><b>Ticket Additional Information: </b>{{access_request.additional_information}}</p>
+                <p class="card-text"><b>Additional Information: </b>{{access_request.additional_information}}</p>
                 
                 <p><b>Request Number: </b><small>{{access_request.request_number}}</small></p>
 
@@ -59,7 +59,7 @@
             <div class="card-body">
                 <h5 class="card-title mb-3">All requests created by {{access_request.creator}}</h5>
                 {% for request_by_user in va_per_user %}
-                <p class="card-text">{{request_by_user.request_number}} <a href="{% url 'access-request-details' request_by_user.pk%}">(view)</a>
+                <p class="card-text">{{request_by_user.visitor_name}} <a href="{% url 'access-request-details' request_by_user.pk%}">(view)</a>
                 </p>
                 {% endfor %}
             </div>

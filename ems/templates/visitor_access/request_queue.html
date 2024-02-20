@@ -10,7 +10,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Request ID</th>
+                    
                     <th scope="col">Visitor Name</th>
                     <th scope="col">Created On</th>
                     <th scope="col">Created By</th>
@@ -21,7 +21,7 @@
             <tbody>
                 {% for a_request in access_request %}
                 <tr>
-                    <td><small>{{a_request.request_number}}</small></td>
+                    
                     <td><small>{{a_request.visitor_name}}</small></td>
                     <td><small>{{a_request.date_created}}</small></td>
                     <td>{{a_request.creator}}</td>

@@ -22,7 +22,7 @@
                 <tr>
                     <td><small>{{resident.username}}</small></td>
                     <td><small>{{resident.email}}</small></td>
-                    <td><small>{{resident.date_joined}}</small></td>
+                    <td><small>{{resident.date_joined|date:"j F, Y"}}</small></td>
                     <td><small><a href="#">View Details</a></small></td>
                     {% if resident.is_security %}
                     <td><small>Security</small></td>
