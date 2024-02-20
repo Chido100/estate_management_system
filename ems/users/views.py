@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import User
 from .forms import RegisterResidentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 from django.contrib.auth import get_user_model
 from django.core.mail import EmailMessage
@@ -73,7 +74,16 @@ def register_resident(request):
 @login_required
 def all_residents(request):
     residents = User.objects.all().order_by("-date_joined")
-    return render(request, "users/all_residents.html", {"residents": residents})
+    paginator = Paginator(residents, 10)
+    try:
+        page_number = request.GET.get('page', 1)
+        users = paginator.page(page_number)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+
+    return render(request, "users/all_residents.html", {"residents": residents, 'users': users})
 
 
 
