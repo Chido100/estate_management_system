@@ -83,7 +83,28 @@ def all_residents(request):
     except EmptyPage:
         users = paginator.page(paginator.num_pages)
 
-    return render(request, "users/all_residents.html", {"residents": residents, 'users': users})
+    
+    # Filter residents
+    all_residents = User.objects.filter(is_resident=True)
+    total_resident_users = all_residents.count()
+
+    # Filter security team
+    all_security = User.objects.filter(is_security=True)
+    total_security_users = all_security.count()
+
+    # Filter management team
+    all_management = User.objects.filter(is_management=True)
+    total_management_users = all_management.count()
+
+    return render(request, 'users/all_residents.html', {
+        'residents': residents,
+        'users': users,
+        'total_resident_users': total_resident_users,
+        'total_security_users': total_security_users,
+        'total_management_users': total_management_users
+    })
+    
+
 
 
 
@@ -124,3 +145,6 @@ def profile_view(request):
             messages.info(request, 'Your account has been updated!')
             return redirect('profile')
     return render(request, template_name, {'u_form': u_form, 'p_form': p_form})
+
+
+
