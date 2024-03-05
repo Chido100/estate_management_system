@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users',
     'dashboard',
     'visitor_access',
+    'community_mail',
     
 
     'crispy_bootstrap5',
