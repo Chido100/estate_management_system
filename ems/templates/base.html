@@ -50,8 +50,8 @@
                                     Community Mail
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Inbox</a></li>
-                                    <li><a class="dropdown-item" href="#">New Mail</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'send-mail' %}">New Mail</a></li>
                                 </ul>
                                 
                             </li>
@@ -185,8 +185,8 @@
                             Community Mail
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Inbox</a></li>
-                            <li><a class="dropdown-item" href="#">New Mail</a></li>
+                            <li><a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a></li>
+                            <li><a class="dropdown-item" href="{% url 'send-mail' %}">New Mail</a></li>
                         </ul>     
                     </li>
                 

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mx-auto" style="width: 40rem;">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Inbox</h5>
+        
+                        <p>Sender - {{ received_mail.sender.username }}</p>
+                        <p>{{ received_mail.content }}</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
