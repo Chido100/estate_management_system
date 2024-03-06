@@ -21,7 +21,7 @@
     {% if request.user.is_resident %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         
-            <a class="navbar-brand" href="/">BENEZA</a>
+            <a class="navbar-brand" href="/">EMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -113,7 +113,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         
-            <a class="navbar-brand" href="/">BENEZA</a>
+            <a class="navbar-brand" href="/">EMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -128,18 +128,10 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'request-queue' %}">Request Queue</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expand="false">Manage Requests</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'all-closed-requests' %}">Closed Requests</a></li>
-                            <!--<li><a class="dropdown-item" href="#">Another Action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'all-closed-requests' %}">Completed Requests</a>
                     </li>
+        
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1"
                             aria-disabled="true">{{request.user.username}}</a>
@@ -161,7 +153,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         
-            <a class="navbar-brand" href="/">BENEZA</a>
+            <a class="navbar-brand" href="/">EMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -171,7 +163,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">All Residents</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'all-residents' %}">Approved Residents</a></li>
@@ -180,10 +172,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Community Mail
-                        </button>
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expand="false">Community Mail</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a></li>
                             <li><a class="dropdown-item" href="{% url 'send-mail' %}">New Mail</a></li>
@@ -192,7 +182,7 @@
                 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">Dashboard Items</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'new-item' %}">Add New</a></li>
@@ -201,7 +191,7 @@
                     </li>
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">Maintenance Requests</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">New Requests</a></li>
@@ -227,7 +217,7 @@
             </div>
 
         
-    </nav> 
+    </nav>
 
     {% endif %}
 
