@@ -2,11 +2,12 @@
 
 
 {% block content %}
-    <h1>{{ item.name }}</h1>
-    <div class="container">
+    <br><h1 class="mx-auto text-center text-dark mb-4" style="color: rgb(47, 47, 87); font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">{{ item.name }}</h1>
+    <div class="container" style="max-width: 70%; max-height: 70px;">
         <div class="card">
             {% if item.image %}
                 <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                
             {% else %}
                 <div class="card-img-top bg-secondary text-white text-center py-3">
                     No Image Available

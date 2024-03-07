@@ -163,14 +163,17 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 # Emailing settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_FROM = 'chidozieamefule@googlemail.com'
-EMAIL_HOST_USER = 'chidozieamefule@googlemail.com'
+EMAIL_FROM = config('EMAIL_SENDER')
+EMAIL_HOST_USER = config('EMAIL_SENDER')
 EMAIL_HOST_PASSWORD = config('MY_EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
 PASSWORD_RESET_TIMEOUT = 14400
+
+DEFAULT_FROM_EMAIL = config('EMAIL_SENDER')
+SERVER_EMAIL = config('EMAIL_SENDER')
 
 
 # AWS Configuration
