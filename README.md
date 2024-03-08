@@ -28,6 +28,10 @@ Django Framework:
 
 The project is built on the powerful and flexible Django web framework.
 
+Frontend:
+
+The frontend is build with Bootstrap5.
+
 Celery:
 
 Utilized Celery for efficient task scheduling and background processing.
