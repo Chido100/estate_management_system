@@ -5,6 +5,7 @@ from .forms import VisitorAccessRequestForm
 from users.models import User
 from django.contrib.auth.decorators import login_required
 import datetime
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # View Visitor Access details
@@ -68,7 +69,17 @@ def update_access_request(request, pk):
 @login_required
 def all_access_requests(request):
     access_requests = VisitorAccessRequest.objects.filter(creator=request.user).order_by('-date_created')
-    return render(request, 'visitor_access/all_access_requests.html', {'access_requests': access_requests})
+
+    open_requests = VisitorAccessRequest.objects.filter(creator=request.user, request_status='Pending')
+    total_open_requests = open_requests.count()
+
+    approved_requests = VisitorAccessRequest.objects.filter(creator=request.user, request_status='Active')
+    total_approved_requests = approved_requests.count()
+
+    completed_requests = VisitorAccessRequest.objects.filter(creator=request.user, request_status='Completed')
+    total_completed_requests = completed_requests.count()
+
+    return render(request, 'visitor_access/all_access_requests.html', {'access_requests': access_requests, 'total_open_requests': total_open_requests, 'total_approved_requests': total_approved_requests, 'total_completed_requests': total_completed_requests})
 
 
 

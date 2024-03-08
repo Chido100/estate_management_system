@@ -12,7 +12,7 @@
 
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-         
+        
     <title>EMS</title>
 </head>
 
@@ -50,8 +50,8 @@
                                     Community Mail
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Inbox</a></li>
-                                    <li><a class="dropdown-item" href="#">New Mail</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'send-mail' %}">New Mail</a></li>
                                 </ul>
                                 
                             </li>
@@ -66,9 +66,9 @@
                                     <li><a class="dropdown-item" href="#">View Requests</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
+                            <!--<li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Repository</a>
-                            </li>
+                            </li>-->
                             
                         </ul>
                     </div>
@@ -92,18 +92,15 @@
                     </li>
 
                 </ul>
-                <!-- <form class="d-flex ms-2">
+                <!--<form class="d-flex ms-2">
                     <input class="form-control me-2" type="search" placeholder="Search Tickets" aria-label>
                     <button class="btn btn-outline-warning me-3" type="submit">Search</button>
-                </form> -->
-
-                
+                </form>-->
 
                 <a href="{% url 'profile' %}" class="btn btn-dark me-2">Profile</a>
-                <a href="{% url 'login' %}" class="btn btn-warning me-2">Logout</a>
+                <a href="{% url 'login' %}" class="btn btn-light me-2">Logout</a>
 
             </div>
-
         
     </nav>
 
@@ -123,23 +120,15 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'workspace' %}">Workspace</a>
+                        <a class="nav-link active" href="{% url 'workspace' %}">Active Requests</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'request-queue' %}">Request Queue</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expand="false">Manage Requests</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'all-closed-requests' %}">Closed Requests</a></li>
-                            <!--<li><a class="dropdown-item" href="#">Another Action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'all-closed-requests' %}">Completed Requests</a>
                     </li>
+        
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1"
                             aria-disabled="true">{{request.user.username}}</a>
@@ -151,7 +140,7 @@
                     <button class="btn btn-outline-warning me-3" type="submit">Search</button>
                 </form> -->
                 <a href="{% url 'profile' %}" class="btn btn-dark me-2">Profile</a>
-                <a href="{% url 'login' %}" class="btn btn-outline-warning me-2">Logout</a>
+                <a href="{% url 'login' %}" class="btn btn-light me-2">Logout</a>
 
             </div>
 
@@ -171,7 +160,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">All Residents</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'all-residents' %}">Approved Residents</a></li>
@@ -180,19 +169,17 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Community Mail
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#">Inbox</a></li>
-                            <li><a class="dropdown-item" href="#">New Mail</a></li>
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expand="false">Community Mail</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a></li>
+                            <li><a class="dropdown-item" href="{% url 'send-mail' %}">New Mail</a></li>
                         </ul>     
                     </li>
                 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">Dashboard Items</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'new-item' %}">Add New</a></li>
@@ -201,7 +188,7 @@
                     </li>
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">Maintenance Requests</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">New Requests</a></li>
@@ -222,12 +209,12 @@
                     <button class="btn btn-outline-warning me-3" type="submit">Search</button>
                 </form> -->
                 <a href="{% url 'profile' %}" class="btn btn-dark me-2">Profile</a>
-                <a href="{% url 'logout' %}" class="btn btn-warning me-2">Logout</a>
+                <a href="{% url 'logout' %}" class="btn btn-light me-2">Logout</a>
 
             </div>
 
         
-    </nav> 
+    </nav>
 
     {% endif %}
 
@@ -253,6 +240,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+
+        
 
 </body>
 

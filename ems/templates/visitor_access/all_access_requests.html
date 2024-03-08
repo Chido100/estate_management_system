@@ -2,7 +2,37 @@
 
 {% block content %}
 
-<div class="card mx-auto" style="width: 76rem;">
+<br><div class="mx-auto text-center text-dark mb-4">
+    <h3 style="font-weight: 800;">Visitor Access Request History</h3>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <div class="card text-bg-warning mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Open Requests</div>
+        <div class="card-body">
+        <h5 class="card-title">Total</h5>
+        <p>{{ total_open_requests }}</p>
+        </div>
+    </div>
+
+    <div class="card text-bg-success mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Approved Requests</div>
+        <div class="card-body">
+        <h5 class="card-title">Total</h5>
+        <p>{{ total_approved_requests }}</p>
+        </div>
+    </div>
+
+    <div class="card text-bg-danger mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Completed Requests</div>
+        <div class="card-body">
+        <h5 class="card-title">Total</h5>
+        <p>{{ total_completed_requests }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="card mx-auto" style="width: 76rem; background-color:rgb(201, 206, 238)">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
     <div class="card-body">
         <h5 class="card-title mb-3">Request Queue</h5>
@@ -10,7 +40,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Request ID</th>
+                    <!---<th scope="col">Request ID</th>--->
                     <th scope="col">Visitor Name</th>
                     <th scope="col">Created On</th>
                     <th scope="col">Assigned To</th>
@@ -21,9 +51,9 @@
             <tbody>
                 {% for access_request in access_requests %}
                 <tr>
-                    <td><small>{{access_request.request_number}}</small></td>
+                    <!---<td><small>{{access_request.request_number}}</small></td>--->
                     <td><small>{{access_request.visitor_name}}</small></td>
-                    <td><small>{{access_request.date_created}}</small></td>
+                    <td><small>{{access_request.date_created|date:"j F, Y"}}</small></td>
                     {% if access_request.assigned_to %}
                     <td><small>{{access_request.assigned_to}}</small></td>
                     {% else %}

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%!f$8qz#x)27qdnnljp_@hx+(69!a%$fqn_-j$v88t%z%j8-#-'
+SECRET_KEY = config('THE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('MY_DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -32,9 +34,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-
-    #'jazzmin',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,10 +44,15 @@ INSTALLED_APPS = [
     'users',
     'dashboard',
     'visitor_access',
+    'community_mail',
     
 
     'crispy_bootstrap5',
     'crispy_forms',
+
+    'django.contrib.postgres',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -89,8 +93,12 @@ WSGI_APPLICATION = 'ems.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ems',
+        'USER': 'ems',
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
 
@@ -117,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 
@@ -155,18 +163,43 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 # Emailing settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_FROM = 'chidozieamefule@googlemail.com'
-EMAIL_HOST_USER = 'chidozieamefule@googlemail.com'
-EMAIL_HOST_PASSWORD = 'xhsq lsru vqze zxsd'
+EMAIL_FROM = config('EMAIL_SENDER')
+EMAIL_HOST_USER = config('EMAIL_SENDER')
+EMAIL_HOST_PASSWORD = config('MY_EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
 PASSWORD_RESET_TIMEOUT = 14400
 
+DEFAULT_FROM_EMAIL = config('EMAIL_SENDER')
+SERVER_EMAIL = config('EMAIL_SENDER')
 
 
-#JAZZMIN_SETTINGS = {
-#    'site_brand': 'EMS',
-#    'site_title': 'EMS',
-#}
+# AWS Configuration
+AWS_ACCESS_KEY_ID = config('MY_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('MY_AWS_SECRET_ACCESS_KEY')
+
+
+# Basic storage configuration for Amazon S3
+AWS_STORAGE_BUCKET_NAME = 'ems-system-files'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_FILE_OVERWRITE = False
+
+
+
+STORAGES = {
+    # Media files (image) management
+
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+
+    # CSS and JS file management
+
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+}

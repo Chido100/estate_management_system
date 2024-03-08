@@ -2,8 +2,38 @@
 
 {% block content %}
 
+<div class="mx-auto text-center text-dark mb-4" >
+    <h3 style="font-weight: 800;">Registered Users</h3>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <div class="card text-bg-warning mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Residents</div>
+        <div class="card-body">
+        <h5 class="card-title">Total</h5>
+        <p>{{ total_resident_users }}</p>
+        </div>
+    </div>
+
+    <div class="card text-bg-success mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Security Team</div>
+        <div class="card-body">
+        <h5 class="card-title">Total</h5>
+        <p>{{ total_security_users }}</p>
+        </div>
+    </div>
+
+    <div class="card text-bg-info mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Management Team</div>
+        <div class="card-body">
+        <h5 class="card-title">Total</h5>
+        <p>{{ total_management_users }}</p>
+        </div>
+    </div>
+</div>
+
+
 <div class="card mx-auto" style="width: 76rem;">
-    <!-- <img src="..." class="card-img-top" alt="..."> -->
     <div class="card-body">
         <h5 class="card-title mb-3">All Residents</h5>
 
@@ -22,8 +52,15 @@
                 <tr>
                     <td><small>{{resident.username}}</small></td>
                     <td><small>{{resident.email}}</small></td>
-                    <td><small>{{resident.date_joined}}</small></td>
+                    <td><small>{{resident.date_joined|date:"j F, Y"}}</small></td>
                     <td><small><a href="#">View Details</a></small></td>
+                    {% if resident.is_security %}
+                    <td><small>Security</small></td>
+                    {% elif resident.is_management %}
+                    <td><small>Management</small></td>
+                    {% else %}
+                    <td><small>Resident</small></td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
                 
@@ -31,5 +68,6 @@
         </table>
     </div>
 </div>
+{% include "pagination.html" with page=residents %}
 
 {% endblock content %}

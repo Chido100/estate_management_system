@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import User
 from .forms import RegisterResidentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 from django.contrib.auth import get_user_model
 from django.core.mail import EmailMessage
@@ -73,7 +74,37 @@ def register_resident(request):
 @login_required
 def all_residents(request):
     residents = User.objects.all().order_by("-date_joined")
-    return render(request, "users/all_residents.html", {"residents": residents})
+    paginator = Paginator(residents, 10)
+    try:
+        page_number = request.GET.get('page', 1)
+        users = paginator.page(page_number)
+    except PageNotAnInteger:
+        users = paginator.page(1)
+    except EmptyPage:
+        users = paginator.page(paginator.num_pages)
+
+    
+    # Filter residents
+    all_residents = User.objects.filter(is_resident=True)
+    total_resident_users = all_residents.count()
+
+    # Filter security team
+    all_security = User.objects.filter(is_security=True)
+    total_security_users = all_security.count()
+
+    # Filter management team
+    all_management = User.objects.filter(is_management=True)
+    total_management_users = all_management.count()
+
+    return render(request, 'users/all_residents.html', {
+        'residents': residents,
+        'users': users,
+        'total_resident_users': total_resident_users,
+        'total_security_users': total_security_users,
+        'total_management_users': total_management_users
+    })
+    
+
 
 
 
@@ -114,3 +145,6 @@ def profile_view(request):
             messages.info(request, 'Your account has been updated!')
             return redirect('profile')
     return render(request, template_name, {'u_form': u_form, 'p_form': p_form})
+
+
+
