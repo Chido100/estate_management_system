@@ -26,5 +26,6 @@ urlpatterns = [
     path('accounts/', include('users.urls')),
     path('', include('dashboard.urls')),
     path('visitor_access/', include('visitor_access.urls')),
+    path('incident_reporting/', inclcude('incident_reporting.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
