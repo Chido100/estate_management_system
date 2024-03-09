@@ -49,18 +49,6 @@
                             <li class="nav-item dropdown">
                                 <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Community Mail
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Inbox</a></li>
-                                    <li><a class="dropdown-item" href="#">New Mail</a></li>
-                                </ul>
-                                
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
                                     Maintenance Request
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -68,6 +56,18 @@
                                     <li><a class="dropdown-item" href="#">View Requests</a></li>
                                 </ul>
                             </li>
+
+                            <li class="nav-item dropdown">
+                                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Critical Alert
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="#">Inbox</a></li>
+                                    <li><a class="dropdown-item" href="#">New Mail</a></li>
+                                </ul>
+                            </li>
+
                             <!--<li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Repository</a>
                             </li>-->
@@ -121,15 +121,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'workspace' %}">Active Requests</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expand="false">Visitor Access Requests</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'workspace' %}">Active Requests</a></li>
+                            <li><a class="dropdown-item" href="{% url 'request-queue' %}">Request Queue</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all-closed-requests' %}">Completed Requests</a></li>
+                        </ul>     
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'request-queue' %}">Request Queue</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'all-closed-requests' %}">Completed Requests</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expand="false">Critical Alert</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Inbox</a></li>
+                            <li><a class="dropdown-item" href="#">New Mail</a></li>
+                        </ul>     
                     </li>
         
                     <li class="nav-item">
@@ -178,16 +187,6 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expand="false">Community Mail</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Inbox</a></li>
-                            <li><a class="dropdown-item" href="#">New Mail</a></li>
-                        </ul>     
-                    </li>
-                
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">Dashboard Items</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'new-item' %}">Add New</a></li>
@@ -203,9 +202,18 @@
                             <li><a class="dropdown-item" href="#">Requests In Progress</a></li>
                             <li><a class="dropdown-item" href="#">Closed Requests</a></li>
                             
-                        </ul>
-                        
+                        </ul>                      
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expand="false">Critical Alert</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Inbox</a></li>
+                            <li><a class="dropdown-item" href="#">New Mail</a></li>
+                        </ul>     
+                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1"
                             aria-disabled="true">{{request.user.username}}</a>
