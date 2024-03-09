@@ -4,13 +4,15 @@ from django.contrib.auth.decorators import login_required
 from .forms import NewItemForm, EditItemForm
 
 
+
+
 # Dashboard view
 @login_required
 def dashboard(request):
     items = Item.objects.filter(is_expired=False).order_by('-date_created')[:6]
     categories = Category.objects.all()
 
-    return render(request, 'dashboard/dashboard.html', {'items': items, 'categories': categories})
+    return render(request, 'dashboard/dashboard.html', {'items': items, 'categories': categories, 'room_name': 'broadcast'})
 
 
 

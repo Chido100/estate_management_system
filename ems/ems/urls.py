@@ -26,6 +26,5 @@ urlpatterns = [
     path('accounts/', include('users.urls')),
     path('', include('dashboard.urls')),
     path('visitor_access/', include('visitor_access.urls')),
-    path('community_mail/', include('community_mail.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
