@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import IncidentReporting
 from .forms import IncidentReportingForm
+import datetime
 
 
 
@@ -12,10 +13,11 @@ from .forms import IncidentReportingForm
 def incident_report_details(request, pk):
     incident_report = get_object_or_404(IncidentReporting, pk=pk)
 
-    report = User.objects.get(username=access_request.reporter)
-    report_per_user = report.reporter.all()
-    context = {'incident_report': incident_report, 'report_per_user': report_per_user}
-    
+    #report = IncidentReporting.objects.get(username=incident_report.reporter)
+    report = IncidentReporting.objects.filter(reporter=incident_report.reporter)
+    #report_per_user = report.reporter.all()
+    context = {'incident_report': incident_report} #'report_per_user': report_per_user}
+
     return render(request, 'incident_reporting/incident_report_details.html', context)
 
 
@@ -65,6 +67,14 @@ def update_incident(request, pk):
         return redirect('dashboard')
 
 
+# Viewing all reported incidents
+@login_required
+def all_reported_incidents(request):
+    reported_incidents = IncidentReporting.objects.filter(reporter=request.user).order_by('-date_created')
+
+    return render(request, 'incident_reporting/all_reported_incidents.html', {'reported_incidents': reported_incidents})
+
+
 
 
 """ For Management Team """
@@ -73,7 +83,7 @@ def update_incident(request, pk):
 # View reports in queue
 @login_required
 def report_queue(request):
-    incident_report = IncidentReporting.objects.filter(request_status='Pending').order_by('-date_created')
+    incident_report = IncidentReporting.objects.filter(incident_status='Pending').order_by('-date_created')
     return render(request, 'incident_reporting/report_queue.html', {'incident_report': incident_report})
 
 
@@ -82,7 +92,7 @@ def report_queue(request):
 def accept_incident_report(request, pk):
     incident_report = IncidentReporting.objects.get(pk=pk)
     incident_report.assignee = request.user
-    incident_report.request_status = 'In-Progress'
+    incident_report.incident_status = 'In-Progress'
     incident_report.date_accepted = datetime.datetime.now()
     incident_report.save()
     messages.info(request, 'Incident Report has been accepted, Please resolve as soon as possible.')
@@ -93,7 +103,7 @@ def accept_incident_report(request, pk):
 @login_required
 def close_incident_report(request, pk):
     incident_report = IncidentReporting.objects.get(pk=pk)
-    incident_report.request_status = 'Completed'
+    incident_report.incident_status = 'Completed'
     incident_report.is_resolved = True
     incident_report.closed_date = datetime.datetime.now()
     incident_report.save()
@@ -105,7 +115,7 @@ def close_incident_report(request, pk):
 @login_required
 def report_in_progress(request):
     incident_reports = IncidentReporting.objects.filter(assignee=request.user, is_resolved=False)
-    return render(request, 'incident_reporting/report_in_progress.html', {'incident_report': incident_reports})
+    return render(request, 'incident_reporting/report_in_progress.html', {'incident_reports': incident_reports})
 
 
 

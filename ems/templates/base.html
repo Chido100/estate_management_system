@@ -49,11 +49,11 @@
                             <li class="nav-item dropdown">
                                 <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Maintenance Request
+                                    Incident Reporting
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Create Request</a></li>
-                                    <li><a class="dropdown-item" href="#">View Requests</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'new-incident' %}">Report Incident</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'all-reported-incidents' %}">View Reports</a></li>
                                 </ul>
                             </li>
 
@@ -196,11 +196,11 @@
                     
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expand="false">Maintenance Requests</a>
+                            data-bs-toggle="dropdown" aria-expand="false">Incident Reporting</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">New Requests</a></li>
-                            <li><a class="dropdown-item" href="#">Requests In Progress</a></li>
-                            <li><a class="dropdown-item" href="#">Closed Requests</a></li>
+                            <li><a class="dropdown-item" href="{% url 'report-queue' %}">New Reports</a></li>
+                            <li><a class="dropdown-item" href="{% url 'report-in-progress' %}">Reports In Progress</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all-resolved-reports' %}">Resolved Reports</a></li>
                             
                         </ul>                      
                     </li>

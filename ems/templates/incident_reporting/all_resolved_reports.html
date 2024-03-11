@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><div class="mx-auto text-center text-dark mb-4">
+    <h3 style="font-weight: 800;">All Resolved Incident Reports</h3>
+</div>
+<br><div class="card mx-auto" style="width: 76rem; background-color:rgb(201, 206, 238)">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    
+                    <th scope="col">Subject</th>
+                    <th scope="col">Date Logged</th>
+                    <th scope="col">Reporter</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">More Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for incident_report in incident_reports %}
+                <tr>
+                    
+                    <td><small>{{incident_report.subject}}</small></td>
+                    <td><small>{{incident_report.date_created}}</small></td>
+                    <td>{{incident_report.reporter}}</td>
+                    {% if incident_report.incident_status == 'In-Progress' %}
+                    <td><span class="badge bg-success">In-Progress</span></td>
+                    {% elif incident_report.incident_status == 'Pending' %}
+                    <td><span class="badge bg-warning">Pending</span></td>
+                    {% elif incident_report.incident_status == 'Completed' %}
+                    <td><span class="badge bg-danger">Completed</span></td>
+                    {% endif %}
+                    <td><small><a href="{% url 'incident-report-details' incident_report.pk %}">View Details</a></small></td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

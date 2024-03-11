@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<br><div class="mx-auto text-center text-dark mb-4">
+    <h3 style="font-weight: 800;">Report Incident</h3>
+</div>
+
+<div class="card mx-auto" style="width: 66rem; height: 0px;">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form|crispy }}
+
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
+{% endblock content %}

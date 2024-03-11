@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><div class="mx-auto text-center text-dark mb-4">
+    <h3 style="font-weight: 800;">Incident Report History</h3>
+</div>
+
+
+<div class="card mx-auto" style="width: 76rem; background-color:rgb(201, 206, 238)">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <div class="card-body">
+        <!--<h5 class="card-title mb-3">Request Queue</h5>-->
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <!---<th scope="col">Request ID</th>--->
+                    <th scope="col">Subject</th>
+                    <th scope="col">Date Logged</th>
+                    <th scope="col">Assigned To</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">More Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reported_incident in reported_incidents %}
+                <tr>
+                    <!---<td><small>{{access_request.request_number}}</small></td>--->
+                    <td><small>{{reported_incident.subject}}</small></td>
+                    <td><small>{{reported_incident.date_created|date:"j F, Y"}}</small></td>
+                    {% if reported_incident.assignee %}
+                    <td><small>{{reported_incident.assignee}}</small></td>
+                    {% else %}
+                    <td><small>Not Assigned</small></td>
+                    {% endif %}
+                    {% if reported_incident.incident_status == 'In-Progress' %}
+                    <td><span class="badge bg-success">In-Progress</span></td>
+                    {% elif reported_incident.incident_status == 'Pending' %}
+                    <td><span class="badge bg-warning">Pending</span></td>
+                    {% elif reported_incident.incident_status == 'Completed' %}
+                    <td><span class="badge bg-danger">Completed</span></td>
+                    {% endif %}
+                    <td><small><a href="{% url 'incident-report-details' reported_incident.pk %}">View Details</a></small></td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

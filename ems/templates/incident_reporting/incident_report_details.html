@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><div class="mx-auto text-center text-dark mb-4">
+    <h3 style="font-weight: 800;">Incident Report Details</h3>
+</div>
+
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mx-auto" style="width: 40rem; background-color:rgb(201, 206, 238)">
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Subject:</th>
+                            <td>{{incident_report.subject}}</td>
+                        </tr>
+                        <tr>
+                            <th>Image:</th>
+                            <td>{{incident_report.image}}</td>
+                        </tr>
+                        <tr>
+                            <th>Content:</th>
+                            <td>{{incident_report.content}}</td>
+                        </tr>
+                        <tr>
+                            <th>Date created:</th>
+                            <td>{{incident_report.date_created}}</td>
+                        </tr>
+                        <tr>
+                            <th>Assigned To:</th>
+                            <td>{{incident_report.assignee}}</td>
+                        </tr>
+                        <tr>
+                            <th>Resolved?</th>
+                            <td>
+                                {% if incident_report.is_resolved %}
+                                <span class="badge bg-danger">Yes</span>
+                                {% else %}
+                                <span class="badge bg-success">No</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Accepted Date:</th>
+                            <td><small>{{incident_report.date_accepted}}</small></td>
+                        </tr>
+                        <tr>
+                            <th>Created By:</th>
+                            <td><small>{{incident_report.reporter}}</small></td>
+                        </tr>
+                        <tr>
+                            <th>Report Status:</th>
+                            <td><small>{{incident_report.incident_status}}</small></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+{% if request.user.is_management and not incident_report.is_resolved %}
+<a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Confirm Resolution</a>
+{% endif %}
+
+{% if request.user.is_resident and not incident_report.is_resolved %}
+<a href="{% url 'update-incident' incident_report.pk %}" class="btn btn-success">Update Incident Report</a>
+{% endif %}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you want to close this incident?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'close-incident-report' incident_report.pk %}" class="btn btn-primary">Save changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
