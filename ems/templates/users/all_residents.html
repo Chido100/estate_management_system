@@ -42,19 +42,18 @@
             <thead>
                 <tr>
                     <th scope="col">Username</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Date Joined</th>
-                    <th scope="col">Details</th>
-                    <th scope="col">Role</th>         
+                    <!--<th scope="col">Email</th>-->
+                    <!--<th scope="col">Date Joined</th>-->
+                    <th scope="col">Role</th>
+                    <th scope="col">Details</th>         
                 </tr>
             </thead>
             <tbody>
                 {% for resident in residents %}
                 <tr>
                     <td><small>{{resident.username}}</small></td>
-                    <td><small>{{resident.email}}</small></td>
-                    <td><small>{{resident.date_joined|date:"j F, Y"}}</small></td>
-                    <td><small><a href="#">View Details</a></small></td>
+                    <!--<td><small>{{resident.email}}</small></td>-->
+                    <!--<td><small>{{resident.date_joined|date:"j F, Y"}}</small></td>-->
                     {% if resident.is_security %}
                     <td><small>Security</small></td>
                     {% elif resident.is_management %}
@@ -62,6 +61,7 @@
                     {% else %}
                     <td><small>Resident</small></td>
                     {% endif %}
+                    <td><small><a href="{% url 'resident-details' resident.pk %}">View Details</a></small></td>
                 </tr>
                 {% endfor %}
                 

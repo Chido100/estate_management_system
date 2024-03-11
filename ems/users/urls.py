@@ -7,6 +7,7 @@ urlpatterns = [
     path("register_resident/", views.register_resident, name="register-resident"),
     path("login/", LoginView.as_view(template_name="users/login.html"), name="login"),
     path("all_residents/", views.all_residents, name="all-residents"),
+    path('resident_detail/<int:pk>/', views.resident_details, name='resident-details'),
     path("logout/", LogoutView.as_view(), name="logout"),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('profile/', views.profile_view, name='profile'),

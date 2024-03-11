@@ -5,6 +5,9 @@ from PIL import Image
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
+    full_name = models.CharField(max_length=100, default='')
+    house_number = models.CharField(max_length=50)
+    street_name = models.CharField(max_length=100)
     
     is_resident = models.BooleanField(default=False)
     is_security = models.BooleanField(default=False)

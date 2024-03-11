@@ -22,7 +22,7 @@
                 {% for incident_report in incident_reports %}
                 <tr>
                     
-                    <td><small>{{incident_report.subject}}</small></td>
+                    <td><small>{{incident_report.subject | truncatechars:50 }}</small></td>
                     <td><small>{{incident_report.date_created}}</small></td>
                     <td>{{incident_report.reporter}}</td>
                     {% if incident_report.incident_status == 'In-Progress' %}

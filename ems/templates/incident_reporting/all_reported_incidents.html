@@ -27,7 +27,7 @@
                 {% for reported_incident in reported_incidents %}
                 <tr>
                     <!---<td><small>{{access_request.request_number}}</small></td>--->
-                    <td><small>{{reported_incident.subject}}</small></td>
+                    <td><small>{{reported_incident.subject | truncatechars:50 }}</small></td>
                     <td><small>{{reported_incident.date_created|date:"j F, Y"}}</small></td>
                     {% if reported_incident.assignee %}
                     <td><small>{{reported_incident.assignee}}</small></td>
