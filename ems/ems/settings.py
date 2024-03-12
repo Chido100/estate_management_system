@@ -201,3 +201,7 @@ STORAGES = {
         "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
     },
 }
+
+
+TWILIO_ACCOUNT_SID = config('MY_TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = config('MY_TWILIO_AUTH_TOKEN')

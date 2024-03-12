@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from phonenumber_field.modelfields import PhoneNumberField
 from PIL import Image
 
 
@@ -8,7 +9,9 @@ class User(AbstractUser):
     full_name = models.CharField(max_length=100, default='')
     house_number = models.CharField(max_length=50)
     street_name = models.CharField(max_length=100)
+    phone_number = PhoneNumberField(blank=True, null=True)
     
+
     is_resident = models.BooleanField(default=False)
     is_security = models.BooleanField(default=False)
     is_management = models.BooleanField(default=False)

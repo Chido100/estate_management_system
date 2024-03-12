@@ -41,6 +41,10 @@
                         <input type="text" class="form-control" name="{{ u_form.street_name.name }}" id="text" value="{{ u_form.street_name.value|default_if_none:'' }}" required>
                     </div>
                     <div class="mb-3">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="tel" class="form-control" name="{{ u_form.phone_number.name }}" id="phone_number" value="{{ u_form.phone_number.value|default_if_none:'' }}" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="image">Upload Picture</label>
                         <input type="file" class="form-control-file" name="{{ p_form.image.name }}" id="image" value="{{ p_form.image.value|default_if_none:'' }}">
                     </div>
