@@ -19,8 +19,8 @@
 
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <br><h5>Information</h5>
-                    <div class="mb-3">
+                    <br><h5>Details</h5>
+                    <br><div class="mb-3">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="{{ u_form.username.name }}" id="username" value="{{ u_form.username.value|default_if_none:'' }}" required>
                     </div>
@@ -44,7 +44,7 @@
                         <label for="image">Upload Picture</label>
                         <input type="file" class="form-control-file" name="{{ p_form.image.name }}" id="image" value="{{ p_form.image.value|default_if_none:'' }}">
                     </div>
-                    <button class="btn btn-primary" type="submit">Update</button>
+                    <button class="btn btn-dark mb-3 w-100" type="submit">Update</button>
                 </form>
             </div>
         </div>

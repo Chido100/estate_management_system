@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="mx-auto text-center text-dark mb-4" >
+<br><div class="mx-auto text-center text-dark mb-4" >
     <h3 style="font-weight: 800;">Registered Users</h3>
 </div>
 
@@ -45,6 +45,8 @@
                     <!--<th scope="col">Email</th>-->
                     <!--<th scope="col">Date Joined</th>-->
                     <th scope="col">Role</th>
+                    <th scope="col">House Number</th>
+                    <th scope="col">Street Name</th>
                     <th scope="col">Details</th>         
                 </tr>
             </thead>
@@ -61,6 +63,8 @@
                     {% else %}
                     <td><small>Resident</small></td>
                     {% endif %}
+                    <td><small>{{resident.house_number}}</small></td>
+                    <td><small>{{resident.street_name}}</small></td>
                     <td><small><a href="{% url 'resident-details' resident.pk %}">View Details</a></small></td>
                 </tr>
                 {% endfor %}

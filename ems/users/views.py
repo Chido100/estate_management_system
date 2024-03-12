@@ -114,9 +114,6 @@ def all_residents(request):
 
 
 
-
-
-
 # User profile
 @login_required
 def profile_view(request):
