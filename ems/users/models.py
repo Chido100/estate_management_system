@@ -4,6 +4,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 from PIL import Image
 
 
+
+
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     full_name = models.CharField(max_length=100, default='')
@@ -11,6 +13,7 @@ class User(AbstractUser):
     street_name = models.CharField(max_length=100)
     phone_number = PhoneNumberField(blank=True, null=True)
     
+    #approval_status = models.CharField(max_length=20, choices=APPROVAL_STATUS, default='Pending')
 
     is_resident = models.BooleanField(default=False)
     is_security = models.BooleanField(default=False)

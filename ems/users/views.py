@@ -67,6 +67,12 @@ def register_resident(request):
     return render(request, "users/register_resident.html", {'form': form})
 
 
+# Register Resident pending approval
+def pending_approval_page(request):
+    return render(request, 'users/pending_approval_page.html')
+
+
+
 
 # Resident Details
 @login_required

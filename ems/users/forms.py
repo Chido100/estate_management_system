@@ -4,9 +4,6 @@ from .models import User, Profile
 
 
 class RegisterResidentForm(UserCreationForm):
-    username = forms.CharField(label="Username",  strip=False, widget=forms.PasswordInput)
-    
-
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ['username', 'email', 'full_name', 'house_number', 'street_name', 'phone_number', 'password1', 'password2']

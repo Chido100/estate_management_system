@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'dashboard',
     'visitor_access',
     'incident_reporting',
+    'critical_alert',
 
     'crispy_bootstrap5',
     'crispy_forms',
