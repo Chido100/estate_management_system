@@ -41,7 +41,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Username</th>
+                    <th scope="col">Full Name</th>
                     <!--<th scope="col">Email</th>-->
                     <!--<th scope="col">Date Joined</th>-->
                     <th scope="col">Role</th>
@@ -53,7 +53,7 @@
             <tbody>
                 {% for resident in residents %}
                 <tr>
-                    <td><small>{{resident.username}}</small></td>
+                    <td><small>{{resident.full_name}}</small></td>
                     <!--<td><small>{{resident.email}}</small></td>-->
                     <!--<td><small>{{resident.date_joined|date:"j F, Y"}}</small></td>-->
                     {% if resident.is_security %}

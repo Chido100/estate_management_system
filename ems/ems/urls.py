@@ -27,5 +27,6 @@ urlpatterns = [
     path('', include('dashboard.urls')),
     path('visitor_access/', include('visitor_access.urls')),
     path('incident_reporting/', include('incident_reporting.urls')),
+    path('critical_alert/', include('critical_alert.urls')),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -65,8 +65,7 @@
                                     Critical Alert
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Inbox</a></li>
-                                    <li><a class="dropdown-item" href="#">New Mail</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'send-alert' %}">Send Alert</a></li>
                                 </ul>
                             </li>
 
@@ -215,8 +214,7 @@
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">Critical Alert</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Inbox</a></li>
-                            <li><a class="dropdown-item" href="#">New Mail</a></li>
+                            <li><a class="dropdown-item" href="{% url 'send-alert' %}">Send Alert</a></li>
                         </ul>     
                     </li>
                     
