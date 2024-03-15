@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><div class="mx-auto text-center text-dark mb-4">
+    <h3 style="font-weight: 800;">Critical Alert History</h3>
+</div>
+
+<br><div class="card mx-auto" style="width: 76rem; background-color:rgb(201, 206, 238)">
+    <div class="card-body">
+        <h5 class="card-title mb-3"></h5>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">House Number</th>
+                    <th scope="col">Street</th>
+                    <th scope="col">Date Sent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for all_alert in all_alerts %}
+                <tr>
+                    <td><small>{{all_alert.sender.full_name}}</small></td>
+                    <td><small>{{all_alert.alert}}</small></td>
+                    <td><small>{{all_alert.sender.house_number}}</small></td>
+                    <td><small>{{all_alert.sender.street_name}}</small></td>
+                    <td><small>{{all_alert.date_sent}}</small></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

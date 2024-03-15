@@ -7,7 +7,7 @@ from decouple import config
 
 
 class CriticalAlert(models.Model):
-    alert = models.TextField()
+    alert = models.TextField(default='Please Help!!!')
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='alert_sender')
     #receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='alert_receiver', default='01')
     date_sent = models.DateTimeField(auto_now_add=True)
