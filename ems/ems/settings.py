@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'visitor_access',
     'incident_reporting',
     'critical_alert',
+    'dwell_dues',
+    'payment',
 
     'crispy_bootstrap5',
     'crispy_forms',
@@ -206,3 +208,8 @@ STORAGES = {
 
 TWILIO_ACCOUNT_SID = config('MY_TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN = config('MY_TWILIO_AUTH_TOKEN')
+
+
+STRIPE_PUBLISHABLE_KEY = config('MY_STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = config('MY_STRIPE_SECRET_KEY')
+STRIPE_API_VERSION = '2024-02-02'

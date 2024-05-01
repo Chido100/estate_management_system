@@ -13,8 +13,11 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         
-
-    <title>Signala Connect</title>
+    {% if title %}
+        <title>Signala - {{ title }}</title>
+    {% else %}
+        <title>Signala</title>
+    {% endif %}
 
 </head>
 
@@ -24,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         
         <a class="navbar-brand" href="/">
-            <img src="/media/app_logo/logo.png" alt="App Logo" height="40" class="d-inline-block align-text-top">
+            <img src="/media/app_logo/logo.png" alt="App Logo" height="60" class="d-inline-block align-text-top">
         </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -65,8 +68,8 @@
                                     Dwell Dues
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Pay Dues</a></li>
-                                    <li><a class="dropdown-item" href="#">Dues History</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'pay-dues' %}">Pay Dues</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'dues-history' %}">Dues History</a></li>
                                 </ul>
                             </li>
 
@@ -178,11 +181,11 @@
 
 
     {% elif request.user.is_management %}
-    
+    <header class="ud-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         
         <a class="navbar-brand" href="/">
-            <img src="/media/app_logo/logo.png" alt="App Logo" height="40" class="d-inline-block align-text-top">
+            <img src="/media/app_logo/logo.png" alt="App Logo" height="60" class="d-inline-block align-text-top">
         </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -222,6 +225,16 @@
                     </li>
 
                     <li class="nav-item dropdown">
+                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dwell Dues
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="{% url 'dues-history' %}">Dues History</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expand="false">Critical Alert</a>
                         <ul class="dropdown-menu">
@@ -246,6 +259,7 @@
 
         
     </nav>
+    </header>
 
     {% endif %}
 

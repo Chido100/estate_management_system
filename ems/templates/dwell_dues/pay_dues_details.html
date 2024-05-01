@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Due Details</h2>
+<p>Utility Type - {{ pay_due.utility_bill }}</p>
+<p>Amount - £{{ pay_due.amount }}</p>
+
+<a href="{% url 'create-checkout-session' pay_due.pk %}" type="submit">Pay</a>
+{% endblock content %}
