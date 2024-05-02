@@ -35,12 +35,12 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
-    'dashboard',
-    'visitor_access',
-    'incident_reporting',
-    'critical_alert',
-    'dwell_dues',
-    'payment',
+    'dashboard.apps.DashboardConfig',
+    'visitor_access.apps.VisitorAccessConfig',
+    'incident_reporting.apps.IncidentReportingConfig',
+    'critical_alert.apps.CriticalAlertConfig',
+    'dwell_dues.apps.DwellDuesConfig',
+    'payment.apps.PaymentConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
