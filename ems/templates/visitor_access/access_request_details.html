@@ -14,6 +14,10 @@
                     <h4 class="card-title mb-3 text-primary">{{access_request.visitor_name}}</h4>
                     <table class="table">
                         <tr>
+                            <th>Access Code:</th>
+                            <td><h5 style="font-weight: 800; color: rgb(227, 9, 20);">{{access_request.access_code}}</h5></td>
+                        </tr>
+                        <tr>
                             <th>Gender:</th>
                             <td>{{access_request.gender}}</td>
                         </tr>
@@ -55,10 +59,7 @@
                             <th>Request Status:</th>
                             <td><small>{{access_request.request_status}}</small></td>
                         </tr>
-                        <tr>
-                            <th>Access Code:</th>
-                            <td><small>{{pass_code}}</small></td>
-                        </tr>
+                        
                     </table>
                     <br>
                         {% if request.user.is_security and not access_request.is_resolved %}

@@ -6,23 +6,16 @@ from users.models import User
 from django.contrib.auth.decorators import login_required
 import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import random
+from django.utils.crypto import get_random_string
 
 
-# Generate pass code
-#def visitor_access_code(request):
-#    pass_code = ""
-#    while len(pass_code) < 5:
-#        random_numbers = random.randint(0, 9)
-#        pass_code += str(random_numbers)
-#    return render(request, 'visitor_access/visitor_access_code.html', {'pass_code': pass_code})
+
 
 
 # View Visitor Access details
 @login_required
 def access_request_details(request, pk):
     access_request = get_object_or_404(VisitorAccessRequest, pk=pk)
-
     va = User.objects.get(username=access_request.creator)
     va_per_user = va.creator.all()
     context = {'access_request': access_request, 'va_per_user': va_per_user}
@@ -129,10 +122,10 @@ def close_access_request(request, pk):
     return redirect('request-queue')
 
 
-# Request security team is working on
+# Request security team has accepted and awaiting visitor arrival
 @login_required
 def workspace(request):
-    access_requests = VisitorAccessRequest.objects.filter(assigned_to=request.user, is_resolved=False)
+    access_requests = VisitorAccessRequest.objects.filter(assigned_to=request.user, is_resolved=False).order_by('-date_created')
     return render(request, 'visitor_access/workspace.html', {'access_requests': access_requests})
 
 
