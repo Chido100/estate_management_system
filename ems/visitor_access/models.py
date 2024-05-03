@@ -29,6 +29,7 @@ class VisitorAccessRequest(models.Model):
     accepted_date = models.DateTimeField(null=True, blank=True)
     closed_date = models.DateTimeField(null=True, blank=True)
     request_status = models.CharField(max_length=50, choices=STATUS_CHOICES)
+    access_code = models.CharField(max_length=10, default="00000")
 
     class Meta:
         verbose_name_plural = 'Visitor Access Request'

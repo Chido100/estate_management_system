@@ -55,6 +55,10 @@
                             <th>Request Status:</th>
                             <td><small>{{access_request.request_status}}</small></td>
                         </tr>
+                        <tr>
+                            <th>Access Code:</th>
+                            <td><small>{{pass_code}}</small></td>
+                        </tr>
                     </table>
                     <br>
                         {% if request.user.is_security and not access_request.is_resolved %}

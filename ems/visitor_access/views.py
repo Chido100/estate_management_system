@@ -9,6 +9,15 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import random
 
 
+# Generate pass code
+#def visitor_access_code(request):
+#    pass_code = ""
+#    while len(pass_code) < 5:
+#        random_numbers = random.randint(0, 9)
+#        pass_code += str(random_numbers)
+#    return render(request, 'visitor_access/visitor_access_code.html', {'pass_code': pass_code})
+
+
 # View Visitor Access details
 @login_required
 def access_request_details(request, pk):
@@ -105,6 +114,7 @@ def accept_access_request(request, pk):
     access_request.save()
     messages.info(request, 'Access Request has been accepted, Please resolve as soon as possible.')
     return redirect('workspace')
+    
 
 
 # Close a request
