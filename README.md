@@ -4,6 +4,11 @@ Overview
 
 Welcome to the Resident Management System Web App, a comprehensive solution developed using the Django framework. This project aims to streamline and enhance the management of residential estates by incorporating advanced features and technologies.
 
+![Screenshot 2024-05-03 at 14 49 44](https://github.com/Chido100/estate_management_system/assets/109086527/d70f0e96-0681-4e31-babd-e3b1d6d78747)
+
+
+
+
 Features
 
 User Authentication:
