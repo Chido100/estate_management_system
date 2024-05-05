@@ -13,16 +13,18 @@
             <thead>
                 <tr>
                     <th scope="col">Visitor Name</th>
+                    <th scope="col">Access Code</th>
                     <th scope="col">Date Created</th>
                     <th scope="col">Created By</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">More</th>
                 </tr>
             </thead>
             <tbody>
                 {% for access_request in access_requests %}
                 <tr>
                     <td><small>{{access_request.visitor_name}}</small></td>
+                    <td><span class="badge bg-primary">{{access_request.access_code}}</span></td>
                     <td><small>{{access_request.date_created}}</small></td>
                     <td>{{access_request.creator}}</td>
                     {% if access_request.request_status == 'Active' %}
