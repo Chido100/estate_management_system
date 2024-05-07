@@ -5,6 +5,7 @@ from .forms import NewItemForm, EditItemForm
 
 
 
+# Dashboard Charts
 
 # Dashboard view
 @login_required
