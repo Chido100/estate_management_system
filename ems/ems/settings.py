@@ -86,7 +86,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ems.wsgi.application'
-#ASGI_APPLICATION = 'ems.routing.application'
+#ASGI_APPLICATION = 'ems.asgi.application'
+
+#CHANNEL_LAYERS = {
+#    'default': {
+#        'BACKEND': "channels.layers.InMemoryChannelLayer"
+#    }
+#}
 
 
 
