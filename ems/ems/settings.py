@@ -34,18 +34,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'dashboard.apps.DashboardConfig',
+    'visitor_access.apps.VisitorAccessConfig',
+    'incident_reporting.apps.IncidentReportingConfig',
+    'critical_alert.apps.CriticalAlertConfig',
+    'dwell_dues.apps.DwellDuesConfig',
+    'payment.apps.PaymentConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'users',
-    'dashboard',
-    'visitor_access',
-    'community_mail',
-    
 
     'crispy_bootstrap5',
     'crispy_forms',
@@ -84,7 +86,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ems.wsgi.application'
+#ASGI_APPLICATION = 'ems.asgi.application'
 
+#CHANNEL_LAYERS = {
+#    'default': {
+#        'BACKEND': "channels.layers.InMemoryChannelLayer"
+#    }
+#}
 
 
 
@@ -149,7 +157,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 AUTH_USER_MODEL = 'users.User'
 
 
@@ -203,3 +210,12 @@ STORAGES = {
         "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
     },
 }
+
+
+TWILIO_ACCOUNT_SID = config('MY_TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = config('MY_TWILIO_AUTH_TOKEN')
+
+
+STRIPE_PUBLISHABLE_KEY = config('MY_STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = config('MY_STRIPE_SECRET_KEY')
+STRIPE_API_VERSION = '2024-02-02'

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Pay Dues{% endblock title %}
+
+{% block content %}
+    <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="card mx-auto" style="width: 30rem;">
+            <div class="card-body p-3 mb-2 bg-light text-dark">
+
+                <form method="post">
+                    
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                    <button class="btn btn-dark mb-3 w-100">Checkout</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %}

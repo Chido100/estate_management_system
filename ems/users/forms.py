@@ -4,15 +4,15 @@ from .models import User, Profile
 
 
 class RegisterResidentForm(UserCreationForm):
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['username', 'email', 'full_name', 'house_number', 'street_name', 'phone_number', 'password1', 'password2']
 
 
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'full_name', 'email', 'house_number', 'street_name']
 
 
 class ProfileUpdateForm(forms.ModelForm):

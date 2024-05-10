@@ -9,10 +9,14 @@
 <div class="container d-flex align-items-center justify-content-center">
     <div class="row">
         <div class="col-md-6">
-            <div class="card mx-auto" style="width: 40rem; background-color:rgb(201, 206, 238)">
+            <div class="card mx-auto" style="width: 40rem;">
                 <div class="card-body">
                     <h4 class="card-title mb-3 text-primary">{{access_request.visitor_name}}</h4>
                     <table class="table">
+                        <tr>
+                            <th>Access Code:</th>
+                            <td><h5 style="font-weight: 800; color: rgb(227, 9, 20);">{{access_request.access_code}}</h5></td>
+                        </tr>
                         <tr>
                             <th>Gender:</th>
                             <td>{{access_request.gender}}</td>
@@ -55,21 +59,21 @@
                             <th>Request Status:</th>
                             <td><small>{{access_request.request_status}}</small></td>
                         </tr>
+                        
                     </table>
+                    <br>
+                        {% if request.user.is_security and not access_request.is_resolved %}
+                        <a href="#" class="btn btn-danger mb-3 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Confirm Resolution</a>
+                        {% endif %}
+
+                        {% if request.user.is_resident and not access_request.is_resolved %}
+                        <a href="{% url 'update-access-request' access_request.pk %}" class="btn btn-dark mb-3 w-100">Update Request</a>
+                        {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<br>
-{% if request.user.is_security and not access_request.is_resolved %}
-<a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Confirm Resolution</a>
-{% endif %}
-
-{% if request.user.is_resident and not access_request.is_resolved %}
-<a href="{% url 'update-access-request' access_request.pk %}" class="btn btn-success">Update Request</a>
-{% endif %}
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

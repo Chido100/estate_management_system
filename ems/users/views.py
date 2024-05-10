@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import User
+from .models import User, Profile
 from .forms import RegisterResidentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -67,6 +67,19 @@ def register_resident(request):
     return render(request, "users/register_resident.html", {'form': form})
 
 
+# Register Resident pending approval
+def pending_approval_page(request):
+    return render(request, 'users/pending_approval_page.html')
+
+
+
+
+# Resident Details
+@login_required
+def resident_details(request, pk):
+    resident = get_object_or_404(User, pk=pk)
+    return render(request, 'users/resident_details.html', {'resident': resident})
+
 
 
 
@@ -104,9 +117,6 @@ def all_residents(request):
         'total_management_users': total_management_users
     })
     
-
-
-
 
 
 

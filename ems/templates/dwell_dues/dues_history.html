@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><div class="card mx-auto" style="width: 76rem;">
+    <div class="card-body">
+        <h5 class="card-title mb-3">Paid Dues History</h5>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Utility Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date Paid</th>         
+                </tr>
+            </thead>
+            <tbody>
+                {% for due in all_dues %}
+                <tr>
+                    <td><small>{{due.utility_bill}}</small></td>
+                    <td><small>£{{due.amount}}</small></td>
+                    <td><small>{{due.payment_date}}</small></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div class="card mx-auto" style="width: 76rem; background-color:rgb(201, 206, 238)">
+<div class="card mx-auto" style="width: 76rem;">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
     <div class="card-body">
         <h5 class="card-title mb-3">Request Queue</h5>
@@ -42,10 +42,11 @@
                 <tr>
                     <!---<th scope="col">Request ID</th>--->
                     <th scope="col">Visitor Name</th>
+                    <th scope="col">Access Code</th>
                     <th scope="col">Created On</th>
                     <th scope="col">Assigned To</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">More</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +54,7 @@
                 <tr>
                     <!---<td><small>{{access_request.request_number}}</small></td>--->
                     <td><small>{{access_request.visitor_name}}</small></td>
+                    <td><small>{{access_request.access_code}}</small></td>
                     <td><small>{{access_request.date_created|date:"j F, Y"}}</small></td>
                     {% if access_request.assigned_to %}
                     <td><small>{{access_request.assigned_to}}</small></td>

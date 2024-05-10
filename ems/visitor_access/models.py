@@ -1,7 +1,7 @@
 from django.db import models
-import uuid
+import random
+import string
 from users.models import User
-
 
 
 STATUS_CHOICES = (
@@ -16,8 +16,15 @@ GENDER_CHOICES = (
     ('female', 'Female')
 )
 
+# Generate random code to use as Visitor Access Code
+def generate_access_code():
+    """Generate a random 5-character access code."""
+    pass_code = ''.join(random.choices(string.digits, k=5))
+    return pass_code
+
+
 class VisitorAccessRequest(models.Model):
-    request_number = models.UUIDField(default=uuid.uuid4)
+    access_code = models.CharField(max_length=5, unique=True, default=generate_access_code)
     visitor_name = models.CharField(max_length=100)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES)
     vehicle_registration = models.CharField(max_length=20, blank=True, null=True)
@@ -29,6 +36,7 @@ class VisitorAccessRequest(models.Model):
     accepted_date = models.DateTimeField(null=True, blank=True)
     closed_date = models.DateTimeField(null=True, blank=True)
     request_status = models.CharField(max_length=50, choices=STATUS_CHOICES)
+
 
     class Meta:
         verbose_name_plural = 'Visitor Access Request'

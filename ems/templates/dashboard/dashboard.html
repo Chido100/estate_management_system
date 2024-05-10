@@ -9,7 +9,7 @@
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
-                <br><h1 style="font-weight: 800;">EMS <span class="text-warning">Connect</span></h1>
+                <br><br><h1 style="font-weight: 800; color: cyan;">Signala</h1>
                 <p class="lead my-4">
                   <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">REVOLUTIONISING ASSET PERFORMANCE FOR PREMIER RESIDENTIAL COMMUNITIES</h1>
                   <h5>Unleashing Unmatched Expertise in Residential Management, Streamlined Asset Administration, 
@@ -63,7 +63,7 @@
 <!-- Boxes -->
 <section class="p-5">
     <div class="container">
-        <h1 style="color: rgb(47, 47, 87); font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">EMS is a powerful tool for...</h1><br>
+        <h1 style="color: rgb(47, 47, 87); font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">Signala is a powerful tool for...</h1><br>
         <div class="row text-center g-4">
             <div class="col-md-4">
                 <div class="card mb-3 text-dark">
@@ -122,7 +122,7 @@
 
 <footer class="p-2 bg-dark text-white text-center position-relative">
     <div class="container">
-        <p class="lead">&copy; 2024 EMS Connect</p>
+        <p class="lead">&copy; 2024 Signala</p>
         <a class="position-absolute bottom-0 end-0 p-5"></a>
     </div>
 </footer>
@@ -156,7 +156,7 @@
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
-              <br><h1 style="font-weight: 800;">EMS <span class="text-warning">Connect</span></h1>
+              <br><h1 style="font-weight: 800; color:cyan;">Signala</h1>
               <p class="lead my-4">
                 <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">REVOLUTIONISING ASSET PERFORMANCE FOR PREMIER RESIDENTIAL COMMUNITIES</h1>
                 <h5>Unleashing Unmatched Expertise in Residential Management, Streamlined Asset Administration, 
@@ -170,7 +170,44 @@
 
 </section>
 
-
+<br><div style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;"><h4>Visitor Access Requests</h4></div>
+  <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <div class="card text-bg-info mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header text-white">Visitor Access Requests</div>
+        <div class="card-body">
+        <p class="card-title text-white">Visitor Access Requests logged today</p>
+        <p class="text-white">{{ all_new_visitor_access_request_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title text-white">Total Visitor Access Requests awaiting  security approval</p>
+          <p class="text-white">{{ total_new_visitor_access_request }}</p>
+        </div>
+    </div>
+  
+    <div class="card text-bg-success mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Awaiting Visitor Arrival</div>
+        <div class="card-body">
+        <p class="card-title">Reviewed by security today</p>
+        <p>{{ all_active_visitor_access_request_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Total Visitor Access Requests reviewed by security</p>
+          <p>{{ total_active_visitor_access_request }}</p>
+          </div>
+    </div>
+  
+    <div class="card text-bg-danger mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Granted Visitor Access</div>
+        <div class="card-body">
+        <p class="card-title">Security granted visitor access today</p>
+        <p>{{ all_completed_visitor_access_request_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Total security granted visitor access</p>
+          <p>{{ total_completed_visitor_access_request }}</p>
+        </div>
+    </div>
+</div>
 
 <!-- Boxes -->
 <section class="p-5">
@@ -209,7 +246,7 @@
 <!-- Boxes -->
 <section class="p-5">
     <div class="container">
-        <h1 style="color: rgb(47, 47, 87); font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">EMS is a powerful tool for...</h1><br>
+        <h1 style="color: rgb(47, 47, 87); font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">Signala is a powerful tool for...</h1><br>
         <div class="row text-center g-4">
             <div class="col-md-4">
                 <div class="card mb-3 text-dark">
@@ -268,7 +305,7 @@
 
 <footer class="p-2 bg-dark text-white text-center position-relative">
     <div class="container">
-        <p class="lead">&copy; 2024 EMS Connect</p>
+        <p class="lead">&copy; 2024 Signala</p>
         <a class="position-absolute bottom-0 end-0 p-5"></a>
     </div>
 </footer>
@@ -302,7 +339,7 @@
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
-              <br><h1 style="font-weight: 800;">EMS <span class="text-warning">Connect</span></h1>
+              <br><br><h1 style="font-weight: 800; color:cyan;">Signala</h1>
               <p class="lead my-4">
                 <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">REVOLUTIONISING ASSET PERFORMANCE FOR PREMIER RESIDENTIAL COMMUNITIES</h1>
                 <h5>Unleashing Unmatched Expertise in Residential Management, Streamlined Asset Administration, 
@@ -316,6 +353,126 @@
 
 </section>
 
+
+
+<!-- Dashboard Charts -->
+
+<!--<h5>Logged In Users</h5>
+  <div class="card text-bg-danger mb-3 mx-auto" style="max-width: 18rem;">
+      <div class="card-header">Active Users</div>
+      <div class="card-body">
+      <p class="card-title">Total</p>
+      <p>{{ logged_in_users }}</p>
+      </div>
+  </div>-->
+
+       
+
+<br><div style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;"><h4>All Users</h4></div>
+<div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+  <div class="card text-bg-primary mb-3 mx-auto" style="max-width: 18rem;">
+      <div class="card-header text-light">All Residents</div>
+      <div class="card-body">
+      <p class="card-title text-light">All registered resident users</p>
+      <p class="text-light">{{ all_resident_users }}</p>
+      </div>
+  </div>
+
+  <div class="card text-bg-primary mb-3 mx-auto" style="max-width: 18rem;">
+      <div class="card-header">Security Team</div>
+      <div class="card-body">
+      <p class="card-title">All registered security personel</p>
+      <p>{{ security_team }}</p>
+      </div>
+  </div>
+
+  <div class="card text-bg-primary mb-3 mx-auto" style="max-width: 18rem;">
+      <div class="card-header text-light">Management Team</div>
+      <div class="card-body">
+      <p class="card-title text-light">Management team members</p>
+      <p class="text-light">{{ management_team }}</p>
+      </div>
+  </div>
+</div>
+
+
+<br><div style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;"><h4>Visitor Access Requests</h4></div>
+  <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <div class="card text-bg-info mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header text-white">Visitor Access Requests</div>
+        <div class="card-body">
+        <p class="card-title text-white">Visitor Access Requests logged today</p>
+        <p class="text-white">{{ all_new_visitor_access_request_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title text-white">Total Visitor Access Requests awaiting  security approval</p>
+          <p class="text-white">{{ total_new_visitor_access_request }}</p>
+        </div>
+    </div>
+  
+    <div class="card text-bg-success mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Awaiting Visitor Arrival</div>
+        <div class="card-body">
+        <p class="card-title">Reviewed by security today</p>
+        <p>{{ all_active_visitor_access_request_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Total Visitor Access Requests reviewed by security</p>
+          <p>{{ total_active_visitor_access_request }}</p>
+          </div>
+    </div>
+  
+    <div class="card text-bg-danger mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Granted Visitor Access</div>
+        <div class="card-body">
+        <p class="card-title">Security granted visitor access today</p>
+        <p>{{ all_completed_visitor_access_request_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Total security granted visitor access</p>
+          <p>{{ total_completed_visitor_access_request }}</p>
+        </div>
+    </div>
+</div>
+
+<br><div style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;"><h4>Incident Reports</h4></div>
+  <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <div class="card text-bg-info mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header text-white">New Incident Reports</div>
+        <div class="card-body">
+        <p class="card-title text-white">Incident Reports logged today</p>
+        <p class="text-white">{{ all_new_incident_reports_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title text-white">Total Incident Reports logged</p>
+          <p class="text-white">{{ total_new_incident_reports }}</p>
+        </div>
+    </div>
+  
+    <div class="card text-bg-warning mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header text-white">Incident Reports In Progress</div>
+        <div class="card-body">
+        <p class="card-title text-white">Incident Reports set In-Progress today</p>
+        <p class="text-white">{{ all_active_incident_reports_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title text-white">Total Incident Reports In-Progress</p>
+          <p class="text-white">{{ total_active_incident_reports }}</p>
+        </div>
+    </div>
+  
+    <div class="card text-bg-success mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header text-white">Closed Incident Reports</div>
+        <div class="card-body">
+        <p class="card-title">Incident Reports closed today</p>
+        <p>{{ all_completed_incident_reports_today }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-title">Total Incident Reports closed</p>
+          <p>{{ total_completed_incident_reports }}</p>
+        </div>
+    </div>
+</div>
 
 
 <!-- Boxes -->
@@ -356,7 +513,7 @@
 <!-- Boxes -->
 <section class="p-5">
     <div class="container">
-        <h1 style="color: rgb(47, 47, 87); font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">EMS is a powerful tool for...</h1><br>
+        <h1 style="color: rgb(47, 47, 87); font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">Signala is a powerful tool for...</h1><br>
         <div class="row text-center g-4">
             <div class="col-md-4">
                 <div class="card mb-3 text-dark">
@@ -417,7 +574,7 @@
 
 <footer class="p-2 bg-dark text-white text-center position-relative">
     <div class="container">
-        <p class="lead">&copy; 2024 EMS Connect</p>
+        <p class="lead">&copy; 2024 Signala</p>
         <a class="position-absolute bottom-0 end-0 p-5"></a>
     </div>
 </footer>

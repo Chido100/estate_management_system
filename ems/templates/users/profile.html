@@ -3,32 +3,56 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<br><div class="mx-auto text-center text-dark mb-4" >
+    <h3 style="font-weight: 800;">My Profile</h3>
+</div>
+
+<br><div class="card mx-auto" style="width: 43rem;">
+    <div class="card-body">
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">Profile</h4>
+                
 
                 <div class="media">
                     <img class="rounded-circle account-img" style="width:100px; height:100px;" src="{{ user.profile.image.url|default:'default.jpg' }}">
 
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <br><h5>Information</h5>
-                    <div class="mb-3">
+                    <br><h5>Details</h5>
+                    <br><div class="mb-3">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="{{ u_form.username.name }}" id="username" value="{{ u_form.username.value|default_if_none:'' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="full_name">Full Name</label>
+                        <input type="text" class="form-control" name="{{ u_form.full_name.name }}" id="username" value="{{ u_form.full_name.value|default_if_none:'' }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="{{ u_form.email.name }}" id="email" value="{{ u_form.email.value|default_if_none:'' }}" required>
                     </div>
                     <div class="mb-3">
+                        <label for="house_number">House Number</label>
+                        <input type="text" class="form-control" name="{{ u_form.house_number.name }}" id="text" value="{{ u_form.house_number.value|default_if_none:'' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="street_name">Street Name</label>
+                        <input type="text" class="form-control" name="{{ u_form.street_name.name }}" id="text" value="{{ u_form.street_name.value|default_if_none:'' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="tel" class="form-control" name="{{ u_form.phone_number.name }}" id="phone_number" value="{{ u_form.phone_number.value|default_if_none:'' }}" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="image">Upload Picture</label>
                         <input type="file" class="form-control-file" name="{{ p_form.image.name }}" id="image" value="{{ p_form.image.value|default_if_none:'' }}">
                     </div>
-                    <button class="btn btn-primary" type="submit">Update</button>
+                    <button class="btn btn-dark mb-3 w-100" type="submit">Update</button>
                 </form>
             </div>
         </div>
     </div>
+    </div>
+</div>
 {% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  
+    <br><br><div class="product">
+        
+        <div class="description">
+        
+        <h3>Utility Type - {{ due.utility_bill }}</h3>
+        <h5>Total Amount - £{{ due.amount }}</h5>
+    </div>
+    </div>
+        <form action="{% url 'create-checkout-session' pk=due.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" id="checkout-button">Checkout</button>
+        </form>
+
+
+{% endblock content %}

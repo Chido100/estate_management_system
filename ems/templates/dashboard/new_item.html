@@ -4,14 +4,27 @@
 
 
 {% block content %}
-<div class="container mt-5">
-    <h2>Add a New Item</h2>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        {{ form|crispy }}
+<br><div class="mx-auto text-center text-dark mb-4">
+    <h3 style="font-weight: 800;">Add New Item</h3>
+</div>
 
-        <button type="submit" class="btn btn-warning mt-3">Add Item</button>
-    </form>
+<div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mx-auto" style="width: 40rem;">
+                
+                <div class="card-body">
+                    <h5 class="card-title mb-3">New Item</h5>
+    
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+    
+                        <button class="btn btn-dark mb-3 w-100" type="submit">Add Item</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock content %}

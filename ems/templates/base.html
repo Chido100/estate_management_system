@@ -13,7 +13,12 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         
-    <title>EMS</title>
+    {% if title %}
+        <title>Signala - {{ title }}</title>
+    {% else %}
+        <title>Signala</title>
+    {% endif %}
+
 </head>
 
 <body>
@@ -21,7 +26,9 @@
     {% if request.user.is_resident %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         
-            <a class="navbar-brand" href="/">EMS</a>
+        <a class="navbar-brand" href="/">
+            <img src="/media/app_logo/logo.png" alt="App Logo" height="60" class="d-inline-block align-text-top">
+        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -47,25 +54,35 @@
                             <li class="nav-item dropdown">
                                 <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Community Mail
+                                    Incident Reporting
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'send-mail' %}">New Mail</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'new-incident' %}">Report Incident</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'all-reported-incidents' %}">View Reports</a></li>
                                 </ul>
-                                
                             </li>
 
                             <li class="nav-item dropdown">
                                 <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Maintenance Request
+                                    Dwell Dues
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Create Request</a></li>
-                                    <li><a class="dropdown-item" href="#">View Requests</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'pay-dues' %}">Pay Dues</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'dues-history' %}">Dues History</a></li>
                                 </ul>
                             </li>
+
+                            <li class="nav-item dropdown">
+                                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Critical Alert
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="{% url 'send-alert' %}">Send Alert</a></li>
+                                </ul>
+                            </li>
+
                             <!--<li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Repository</a>
                             </li>-->
@@ -97,6 +114,7 @@
                     <button class="btn btn-outline-warning me-3" type="submit">Search</button>
                 </form>-->
 
+
                 <a href="{% url 'profile' %}" class="btn btn-dark me-2">Profile</a>
                 <a href="{% url 'login' %}" class="btn btn-light me-2">Logout</a>
 
@@ -110,7 +128,9 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         
-            <a class="navbar-brand" href="/">EMS</a>
+        <a class="navbar-brand" href="/">
+            <img src="/media/app_logo/logo.png" alt="App Logo" height="40" class="d-inline-block align-text-top">
+        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -118,15 +138,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'workspace' %}">Active Requests</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expand="false">Visitor Access Requests</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'request-queue' %}">New Access Requests</a></li>
+                            <li><a class="dropdown-item" href="{% url 'workspace' %}">Approved Access Requests</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all-closed-requests' %}">Completed Access Requests</a></li>
+                        </ul>     
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'request-queue' %}">Request Queue</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'all-closed-requests' %}">Completed Requests</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expand="false">Critical Alert</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'send-alert' %}">Send Alert</a></li>
+                            <li><a class="dropdown-item" href="{% url 'alert-history' %}">Alert History</a></li>
+                        </ul>     
                     </li>
         
                     <li class="nav-item">
@@ -139,18 +168,28 @@
                     <input class="form-control me-2" type="search" placeholder="Search Tickets" aria-label>
                     <button class="btn btn-outline-warning me-3" type="submit">Search</button>
                 </form> -->
+
+
+
+
+
                 <a href="{% url 'profile' %}" class="btn btn-dark me-2">Profile</a>
                 <a href="{% url 'login' %}" class="btn btn-light me-2">Logout</a>
 
             </div>
 
+
     </nav>    
 
+
+
     {% elif request.user.is_management %}
-    
+    <header class="ud-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         
-            <a class="navbar-brand" href="/">EMS</a>
+        <a class="navbar-brand" href="/">
+            <img src="/media/app_logo/logo.png" alt="App Logo" height="60" class="d-inline-block align-text-top">
+        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -164,19 +203,9 @@
                             data-bs-toggle="dropdown" aria-expand="false">All Residents</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'all-residents' %}">Approved Residents</a></li>
+                            <li><a class="dropdown-item" href="#">Awaiting Approval</a></li>
                         </ul>
-                        
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expand="false">Community Mail</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'inbox' %}">Inbox</a></li>
-                            <li><a class="dropdown-item" href="{% url 'send-mail' %}">New Mail</a></li>
-                        </ul>     
-                    </li>
-                
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
@@ -189,15 +218,33 @@
                     
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expand="false">Maintenance Requests</a>
+                            data-bs-toggle="dropdown" aria-expand="false">Incident Reporting</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">New Requests</a></li>
-                            <li><a class="dropdown-item" href="#">Requests In Progress</a></li>
-                            <li><a class="dropdown-item" href="#">Closed Requests</a></li>
+                            <li><a class="dropdown-item" href="{% url 'report-queue' %}">New Reports</a></li>
+                            <li><a class="dropdown-item" href="{% url 'report-in-progress' %}">Reports In Progress</a></li>
+                            <li><a class="dropdown-item" href="{% url 'all-resolved-reports' %}">Resolved Reports</a></li>
                             
-                        </ul>
-                        
+                        </ul>                      
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dwell Dues
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="{% url 'dues-history' %}">Dues History</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expand="false">Critical Alert</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'send-alert' %}">Send Alert</a></li>
+                        </ul>     
+                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1"
                             aria-disabled="true">{{request.user.username}}</a>
@@ -215,6 +262,7 @@
 
         
     </nav>
+    </header>
 
     {% endif %}
 
@@ -240,8 +288,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
-
-        
+    
 
 </body>
 

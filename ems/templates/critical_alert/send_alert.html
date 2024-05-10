@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mx-auto" style="width: 40rem;">
+            <div class="mx-auto text-center text-danger mb-2" >
+                <h3 style="font-weight: 600;">Please only send an alert if in danger!</h3>
+            </div>
+            <div class="card-body">
+
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                    <button class="btn btn-danger mb-3 w-100">Send Alert</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
