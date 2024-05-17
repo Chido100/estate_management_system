@@ -57,8 +57,8 @@ def register_resident(request):
         form = RegisterResidentForm(request.POST)
         if form.is_valid():
             resident = form.save(commit=False)
-            # Make is_resident true for newly registered user
-            resident.is_resident = True
+            # Make is_guest true for newly registered user
+            resident.is_guest = True
             resident.save()
             activate_email(request, resident, form.cleaned_data.get('email'))
             return redirect("login")

@@ -31,8 +31,8 @@ class User(AbstractUser):
     street_name = models.ForeignKey(AllStreets, on_delete=models.CASCADE, related_name='all_streets', default='street')
     phone_number = PhoneNumberField(blank=True, null=True)
     
-    #approval_status = models.CharField(max_length=20, choices=APPROVAL_STATUS, default='Pending')
-
+    
+    is_guest = models.BooleanField(default=False)
     is_resident = models.BooleanField(default=False)
     is_security = models.BooleanField(default=False)
     is_management = models.BooleanField(default=False)
