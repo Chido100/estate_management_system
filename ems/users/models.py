@@ -4,7 +4,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 from PIL import Image
 
 
-
 class AllStreets(models.Model):
     street = models.CharField(max_length=100)
 
@@ -37,6 +36,8 @@ class User(AbstractUser):
     is_resident = models.BooleanField(default=False)
     is_security = models.BooleanField(default=False)
     is_management = models.BooleanField(default=False)
+
+    
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
